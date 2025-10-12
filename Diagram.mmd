@@ -1,0 +1,37 @@
+erDiagram
+    USERS {
+        int user_id PK
+        varchar username
+        varchar password
+    }
+    JOBS {
+        varchar job_ref PK
+        varchar title
+        text description
+        varchar salary
+        varchar location
+        date closing_date
+        text requirements
+    }
+    EOI {
+        int EOInumber PK
+        varchar job_ref FK
+        varchar first_name
+        varchar last_name
+        date dob
+        enum gender
+        varchar address
+        varchar email
+        varchar phone
+        text skills
+        enum status
+    }
+    ABOUT {
+        int member_id PK
+        varchar name
+        text contribution_part1
+        text contribution_part2
+    }
+
+    JOBS ||--o{ EOI : "has"
+    USERS ||--o{ EOI : "manages"
