@@ -1,0 +1,148 @@
+/*
+
+Filename: Can Van Sang
+
+Author: Can Van Sang
+
+Created: 12/09/2025
+
+Last modified: 25/09/2025
+
+Description: CSS sheet for applys.html
+*/
+/* Root variables */
+:root {
+  --bg: #0a0f1a;
+  --panel: #0f1626;
+  --muted: #a8b3c7;
+  --text: #e7edf5;
+  --accent: #00e5ff;
+  --accent-2: #7c4dff;
+  --border: #233142;
+}
+
+/* Global reset */
+* { box-sizing: border-box; }
+html { color-scheme: dark; }
+
+body {
+  margin: 0;
+  font-family: system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--bg);
+}
+.site-main {
+  padding: 1rem;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  margin-top: 1.5rem;
+}
+.container {
+  width: min(1100px, 92%);
+  margin: 0 auto;
+}
+
+.small { font-size: 0.9rem; color: var(--muted); }
+
+/* Header & navigation */
+.site-header {
+  background: linear-gradient(180deg, rgba(15,22,38,0.95), rgba(15,22,38,0.85));
+  border-bottom: 1px solid var(--border);
+}
+.header-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.75rem 0;
+}
+.brand { display: inline-flex; align-items: center; gap: 0.75rem; text-decoration: none; color: inherit; }
+.brand-text { display: grid; }
+.brand-name { font-weight: 700; letter-spacing: 0.2px; }
+.brand-slogan { font-size: 0.9rem; color: var(--muted); }
+
+.site-nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 1rem; }
+.site-nav a {
+  color: var(--text);
+  text-decoration: none;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.35rem;
+}
+.site-nav a:hover,
+.site-nav a:focus-visible { background: #131b2c; }
+.site-nav a.current { outline: 2px solid var(--accent); }
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  color: #001018;
+  padding: 0.6rem 1rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  font-weight: 700;
+  border: none;
+}
+.btn:hover,
+.btn:focus-visible { filter: brightness(1.1); }
+
+/* Footer */
+.site-footer {
+  border-top: 1px solid var(--border);
+  background: #0b1220;
+  margin-top: 3rem;
+}
+.footer-inner { padding: 1rem 0 2rem; }
+.footer-links { list-style: none; padding: 0; margin: 0.25rem 0 0; display: flex; gap: 1rem; }
+.footer-links a { color: var(--accent); }
+
+/* Apply page forms */
+.form-grid {
+  display: grid;
+  gap: 1rem 1.25rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  background: var(--panel);
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+}
+.form-grid fieldset { border: 1px solid var(--border); padding: 0.75rem; border-radius: 0.5rem; }
+.form-grid legend { padding: 0 0.25rem; color: var(--accent); font-weight: 700; }
+.form-field { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 0.5rem; }
+.form-field label { font-weight: 600; }
+.form-field input,
+.form-field select,
+.form-field textarea {
+  background: #0b1220;
+  color: var(--text);
+  border: 1px solid #1c2740;
+  border-radius: 0.35rem;
+  padding: 0.55rem 0.6rem;
+}
+.form-field input:focus-visible,
+.form-field select:focus-visible,
+.form-field textarea:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.radio-row { display: inline-flex; align-items: center; gap: 0.35rem; margin-right: 1rem; }
+.checkbox-grid {
+  display: grid;
+  gap: 0.25rem 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+}
+.grid-span-2 { grid-column: 1 / -1; }
+
+/* Links and text */
+a { color: var(--accent); }
+a:hover, a:focus-visible { color: #9ef2ff; }
+
+/* Responsive tweaks */
+@media (max-width: 800px) {
+  .header-inner { flex-wrap: wrap; gap: 0.75rem; }
+  .form-grid { grid-template-columns: 1fr; }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}

@@ -1,0 +1,303 @@
+/*
+
+Filename: Disha Anchan
+
+Author: Disha Anchan
+
+Created: 11/09/2025
+
+Last modified: 25/09/2025
+
+Description: CSS sheet for jobs.html
+*/
+
+/*General Body Styling*/
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    margin: 0em;
+    padding: 0em;
+    background-color: #0a0f1a;
+    color: #e7edf5;
+    line-height: 1.6;
+}
+
+/*  ======================  Header Styling  ====================== */
+
+/* ----- Header layout ----- */
+.header {
+    display: flex;
+    justify-content: space-around;
+    padding: 0.75em 0em;
+    background-color:  #0f1626;
+    border: 1px solid #233142;
+}
+
+
+/*  ===========  Panda Mice Logo and Title Styling  =========== */
+
+/* ----- Container for Brand  ----- */
+.header-inner {
+    display: flex;
+    align-items: center; 
+    justify-content: space-between;
+}
+
+/* -----  Hyperlink Styling ----- */
+.header-brand {
+    display: inline-flex; 
+    align-items: end;
+    gap: 0.75em;
+    text-decoration: none;
+    color: #e7edf5;
+}
+
+/* -----  Hyperlink when hover Styling ----- */
+.header-brand:hover {
+    color: #a4f3fd;
+}
+
+/* -----  Container for Company name and Slogan ----- */
+.header-text { 
+    display: grid;
+}
+
+/* -----  Company Name Styling ----- */
+.header-name { 
+    font-weight: 700; 
+    letter-spacing: 0.2px; 
+}
+
+/* -----  Company Name Styling ----- */
+.header-slogan { 
+    font-size: 0.9em; 
+    color: #a8b3c7
+}
+
+/*  ===========  Navigation Menu Styling  =========== */
+/* -----  Menu Layout Styling ----- */
+.menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0em 0.3em;
+    margin: 0em;
+
+}
+
+.menu ul{
+    display: contents;              /* this hides the element and make .menu element the parent of the li elements */
+}
+
+/*  ===========  Navigation Links Styling  =========== */
+
+/* -----  Menu Layout Styling ----- */
+.menu li {
+    display: inline-flex;
+    list-style-type: none;
+    margin: 0em 0.5em;
+    padding: 0em;
+}
+
+/* -----  Highlights the current page on the navigation menu ----- */
+.menu li:nth-child(2) {
+    border: #00e5ff 2px solid;
+    border-radius: 0.5em;
+}
+
+/* ----- Navigation Hyperlinks ----- */
+.menu a {
+    display: block;
+    text-decoration: none;
+    color: #e7edf5;
+    font-size: 16px;
+    margin: 0em;
+    padding: 0.3em 0.75em;
+}
+
+/* ----- Navigation Hyperlinks when Hovered ----- */
+.menu a:hover {
+    color: #90c5cb;
+    background-color: #233142;
+    border-radius: 0.5em;
+
+}
+
+/*  ===========  Main Content Styling  =========== */
+
+/* ----- Main Layout Styling ----- */
+main {
+    margin: 0em;
+    padding: 2em 2em 0.5em;
+    background-color:   #0a0f1a;
+    border: 1px solid #233142;
+}
+
+/* ----- Main Header Section ----- */
+main h1 {
+    display: block;
+    color:  #e7edf5;
+    margin: 0.5em 0em;
+    font-size: 30px;
+}
+
+
+/*  ===========  "Why Join Us?" Section Styling  =========== */
+
+/* ----- Container for "Why join Us" Section ----- */
+
+
+/* ----- "Why join Us" Aside Section ----- */
+.join-us {
+    width: 25%;
+    float: right;
+    border-radius: 1em;
+    background-color:#0a0f1a;
+    border: #00e5ff 1px solid;
+
+}
+
+/* ----- "Why join Us" Aside Heading Styling ----- */
+.join-us h2 {
+    color: #e7edf5;
+    font-size: 18px;
+    margin: 0.5em 0.5em 0em;
+    padding: 0em;
+}
+
+/* ----- "Why join Us" Aside Reasons Styling ----- */
+.join-us li {
+    margin: 0.3em 0em;
+    padding: 0em;
+    list-style-type: disc;
+}
+
+/*  ===========  Job Description Layout Styling  =========== */
+
+/* ----- Container for "Job Description" Section ----- */
+
+.job-position {
+    width: 70%;
+    margin: 0em;
+    padding: 0em 1em;
+
+}
+
+/* ----- Job Description Main Heading ----- */
+.job-position h2 {
+    color: #e7edf5;
+    display: inline-block;
+    font-size: 24px;
+    margin: 0em;
+    padding: 0em;
+}
+
+/* ----- Job Description Subsection Heading ----- */
+.job-details h3, .job-desc h3, .key-resp h3, .job-req h3, .job-req h4 {
+    color:  #e7edf5;
+    font-size: 20px;
+    margin: 1em 1em 0.5em;
+}
+
+/*  ===========  "Job Details" Section Styling  =========== */
+
+/* Styling for Reference Number, Salary and Reporting Line Heading */
+.job-details strong {
+    color:  #e7edf5;
+    margin: 0em 0.5em 0em 1em;
+    
+}
+
+/*  ===========  "Key Responsibilities" Section  Styling  =========== */
+
+
+.key-resp ol {
+    margin: 0em 3em;
+    padding: 0em 2em;
+}
+
+/*  ===========  "Job Requirements" Section Styling  =========== */
+
+.job-req h5 {
+    color:  #e7edf5;
+    font-size: 18px;
+    margin: 1em 1em 0.5em;
+}
+
+.job-req ul {
+    display: inline-block; 
+}
+
+.job-position p {
+    margin: 0em 1em;
+}
+
+/*  ===========  "Apply Now" Button Styling  =========== */
+
+.apply-btn {
+    display: inline-block;
+    margin: 1em 3em 0em;
+
+}
+
+.apply-btn button {
+    border-radius: 0.7em;
+    background: linear-gradient(90deg, #00e5ff, #7c4dff);
+    color: #001018;
+    margin: 0em;
+    padding: 1.2em;
+    font-size: 18px;
+    font-weight: bold;
+    border: 1px solid #233142;
+
+}
+
+.apply-btn button:hover {
+    background: linear-gradient(90deg, #a4f3fd, #c8b5fc);
+    color: #233142;
+}
+
+/*  ===========  Footer Section Styling Styling  =========== */
+
+.footer {
+    background-color:  #0f1626;
+    border: 1px solid #233142;
+    padding: 0.5em;
+    margin: 2em;
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-gap: 5px;
+    justify-content: space-evenly;
+}
+
+    /* Footer */
+    .site-footer {
+    border-top: 1px solid #233142;
+    background: #0b1220;
+    margin-top: 3rem;
+    }
+
+    .footer-inner { 
+        padding: 2em 6em 2em; 
+    }
+    .footer-links { 
+        list-style: none; 
+        padding: 0; 
+        margin: 0.25em 0em 0em; 
+        display: flex; 
+        gap: 1rem;
+    }
+    .footer-links a, .site-footer a { 
+        color: #00e5ff
+    }
+
+/*  ===========  Media Query for Responsive page  =========== */
+@media (max-width: 650px) {
+
+    .header {
+        display: grid;
+    }
+
+
+}
+
