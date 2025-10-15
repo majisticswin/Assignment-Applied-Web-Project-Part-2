@@ -38,12 +38,12 @@
             
             if (empty($firstname)) {
                 echo "firstname is required.<br>";}
-            if (!preg_match("/^[A-Za-z]{1,20}$/", $firstname)) {
+            if (!preg_match("/^[A-Za-z-]{1,20}$/", $firstname)) {
                 echo "invalid characters used.<br>";}
 
             if (empty($lastname)) {
                 echo "lastname is required.<br>";}
-            if (!preg_match("/^[A-Za-z]{1,20}$/", $lastname)) {
+            if (!preg_match("/^[A-Za-z-]{1,20}$/", $lastname)) {
                 echo "invalid characters used.<br>";}
 
             if (empty($dob)) {
@@ -90,6 +90,10 @@
           echo ("$otherskills");
 
 
+          //add generated EOI number and tell user
+        }
+        else{
+            echo "not allowed";   //change with redirect
         }
     ?>
 </body>
