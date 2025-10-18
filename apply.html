@@ -44,7 +44,7 @@
        <h1>Job Application</h1>
       <p>Please fill out the form below to apply for a job at Panda Mice. All fields marked with an asterisk (*) are required.</p>
        <!--Form Begin -->
-       <form class="form-grid" method="post" action="http://mercury.swin.edu.au/it000000/formtest.php" novalidate class="form-grid">
+       <form class="form-grid" method="post" action="process_eoi.php" novalidate class="form-grid">
          <p id="form-help" class="small">All fields are required unless marked optional.</p>
         <!-- Personal Information -->
       <fieldset class="grid-span-2">
@@ -56,11 +56,8 @@
             type="text"
             id="jobref"
             name="jobref"
-            maxlength="5"
-            pattern="^[A-Za-z0-9]{5}$"
             title="Exactly 5 letters or digits (alphanumeric)."
             inputmode="latin"
-            required
           />
         </div>
 
@@ -70,10 +67,7 @@
             type="text"
             id="firstname"
             name="firstname"
-            maxlength="20"
-            pattern="^[A-Za-z]{1,20}$"
             title="Letters only, up to 20 characters."
-            required
           />
         </div>
 
@@ -83,16 +77,13 @@
             type="text"
             id="lastname"
             name="lastname"
-            maxlength="20"
-            pattern="^[A-Za-z]{1,20}$"
             title="Letters only, up to 20 characters."
-            required
           />
         </div>
 
         <div class="form-field">
           <label for="dob">Date of Birth</label>
-          <input type="date" id="dob" name="dob" required />
+          <input type="date" id="dob" name="dob" />
         </div>
       </fieldset>
         <!-- Gender -->
@@ -112,9 +103,7 @@
             type="text"
             id="street"
             name="street"
-            maxlength="40"
             title="Up to 40 characters."
-            required
           />
         </div>
         <div class="form-field">
@@ -123,9 +112,7 @@
             type="text"
             id="suburb"
             name="suburb"
-            maxlength="40"
             title="Up to 40 characters."
-            required
           />
         </div>
         <div class="form-field">
@@ -148,11 +135,8 @@
             type="text"
             id="postcode"
             name="postcode"
-            maxlength="4"
-            pattern="^\d{4}$"
             inputmode="numeric"
             title="Exactly 4 digits."
-            required
           />
         </div>
       </fieldset>
@@ -170,11 +154,8 @@
             type="text"
             id="phone"
             name="phone"
-            maxlength="12"
-            pattern="^\d{8,12}$"
             inputmode="numeric"
             title="Enter 8 to 12 digits (numbers only)."
-            required
           />
         </div>
       </fieldset>
