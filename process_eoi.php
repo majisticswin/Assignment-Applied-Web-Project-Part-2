@@ -1,99 +1,107 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<title>Booking Confirmation</title>
-	<meta charset="utf-8">
-	<meta name="description" content="job interest form" >
-	<meta name="keywords"    content="stuff" >
-	<meta name="author"      content="Samuel Moore-Coulson " />
-</head>
-<body>
-
 <?php
-        function sanitise_input($data){
-            $data = trim($data);
-            $data = stripslashes($data);
-            $data = htmlspecialchars($data);
-            return $data;
-        }
-        if($_SERVER["REQUEST_METHOD"] == "POST"){
-            $jobref = sanitise_input($_POST["jobref"]);
-            $firstname = sanitise_input($_POST["firstname"]);
-            $lastname = sanitise_input($_POST["lastname"]);
-            $dob = sanitise_input($_POST["dob"]);
-            $gender = sanitise_input($_POST["gender"]);
-            $street = sanitise_input($_POST["street"]);
-            $suburb = sanitise_input($_POST["suburb"]);                         
-            $state = sanitise_input($_POST["state"]);
-            $postcode = sanitise_input($_POST["postcode"]);     
-            $email = sanitise_input($_POST["email"]);
-            $phone = sanitise_input($_POST["phone"]);
-            $skills = isset($_POST["skills"]) ? $_POST["skills"] : [];
-            $otherskills = sanitise_input($_POST["otherskills"]);
-            
-            if (empty($jobref)) {
-                echo "Job Reference number is required.<br>";}
-            if (!preg_match("/^[A-Za-z0-9]{5}$/", $jobref)) {
-                echo "invalid characters used.<br>";}
-            
-            if (empty($firstname)) {
-                echo "firstname is required.<br>";}
-            if (!preg_match("/^[A-Za-z-]{1,20}$/", $firstname)) {
-                echo "invalid characters used.<br>";}
+// process_eoi.php - Handles job application submissions
+// Purpose: Validate, sanitize, and insert EOI records into the database
 
-            if (empty($lastname)) {
-                echo "lastname is required.<br>";}
-            if (!preg_match("/^[A-Za-z-]{1,20}$/", $lastname)) {
-                echo "invalid characters used.<br>";}
+// Block direct access if no POST data
+if ($_SERVER['REQUEST_METHOD'] !== 'POST' || empty($_POST['jobref'])) {
+    header("Location: apply.php");
+    exit();
+}
 
-            if (empty($dob)) {
-                echo "Date of Birth is required.<br>";}
-           
+require_once("settings.php");
 
-            if (empty($street)) {
-                echo "Street is required.<br>";}
-            if (!preg_match("/^[A-Za-z0-9]{1,40}$/", $firstname)) {
-                echo "Street - invalid characters used.<br>";}
+// Connect to database
+$conn = @mysqli_connect($host, $user, $pwd, $sql_db);
+if (!$conn) {
+    die("<p>Database connection failure</p>");
+}
 
-            if (empty($suburb)) {
-                echo "Suburb is required.<br>";}
-            if (!preg_match("/^[A-Za-z]{1,40}$/", $suburb)) {
-                echo "Suburb - invalid characters used.<br>";}
+// Ensure EOI table exists
+$createTable = "
+CREATE TABLE IF NOT EXISTS eoi (
+  EOInumber INT AUTO_INCREMENT PRIMARY KEY,
+  job_ref VARCHAR(5) NOT NULL,
+  first_name VARCHAR(50) NOT NULL,
+  last_name VARCHAR(50) NOT NULL,
+  dob DATE NOT NULL,
+  gender ENUM('Male','Female','Other') NOT NULL,
+  street_address VARCHAR(100) NOT NULL,
+  suburb VARCHAR(50) NOT NULL,
+  state VARCHAR(10) NOT NULL,
+  postcode CHAR(4) NOT NULL,
+  email VARCHAR(100) NOT NULL,
+  phone VARCHAR(20) NOT NULL,
+  skills TEXT,
+  status ENUM('New','Current','Final') DEFAULT 'New',
+  FOREIGN KEY (job_ref) REFERENCES jobs(job_ref)
+    ON UPDATE CASCADE ON DELETE RESTRICT
+)";
+mysqli_query($conn, $createTable);
 
-            if (empty($postcode)) {
-                echo "Postcode is required.<br>";}
-            if (!preg_match("/^[0-9]{4}$/", $postcode)) {
-                echo "Please use 4 numbers for your postcode.<br>";}
+// Helper: sanitize input
+function clean_input($data, $conn) {
+    return mysqli_real_escape_string($conn, htmlspecialchars(trim($data)));
+}
 
-            if (empty($email)) {
-                echo "Email is required.<br>";}
-            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                echo "Invalid email format.<br>";}
+// Collect and validate inputs
+$errors = [];
+$job_ref   = clean_input($_POST['jobref'], $conn);
+$firstname = clean_input($_POST['firstname'], $conn);
+$lastname  = clean_input($_POST['lastname'], $conn);
+$dob       = clean_input($_POST['dob'], $conn);
+$gender    = clean_input($_POST['gender'], $conn);
+$street    = clean_input($_POST['street'], $conn);
+$suburb    = clean_input($_POST['suburb'], $conn);
+$state     = clean_input($_POST['state'], $conn);
+$postcode  = clean_input($_POST['postcode'], $conn);
+$email     = clean_input($_POST['email'], $conn);
+$phone     = clean_input($_POST['phone'], $conn);
+$skillsArr = isset($_POST['skills']) ? $_POST['skills'] : [];
+$skills    = clean_input(implode(", ", $skillsArr) . " " . ($_POST['otherskills'] ?? ""), $conn);
 
-            if (empty($phone)) {
-                echo "Phnoe Number is required.<br>";}
-            if (!preg_match("/^\+?(\d{1,3})?[\s.-]?\(?(\d{3})\)?[\s.-]?(\d{3})[\s.-]?(\d{4})$/", $phone));        //found from google
+// Validation rules
+if (!preg_match("/^[A-Za-z]{1}[0-9]{4}$/", $job_ref)) {
+    $errors[] = "Job reference must be 1 letter followed by 4 digits (e.g., A1234).";
+}
+if (!preg_match("/^[A-Za-z]{1,20}$/", $firstname)) {
+    $errors[] = "First name must be letters only, up to 20 characters.";
+}
+if (!preg_match("/^[A-Za-z]{1,20}$/", $lastname)) {
+    $errors[] = "Last name must be letters only, up to 20 characters.";
+}
+if (!preg_match("/^[0-9]{4}$/", $postcode)) {
+    $errors[] = "Postcode must be exactly 4 digits.";
+}
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $errors[] = "Invalid email format.";
+}
+if (!preg_match("/^[0-9]{8,12}$/", $phone)) {
+    $errors[] = "Phone number must be 8–12 digits.";
+}
 
+// If errors, show them
+if (!empty($errors)) {
+    echo "<h1>Application Error</h1><ul>";
+    foreach ($errors as $e) { //Using $e without initializing it will trigger an "undefined variable" notice when error reporting is enabled.
+        echo "<li>" . htmlspecialchars($e) . "</li>"; //$e is different from superglobals like $_GET['e']
+    }
+    echo "</ul><p><a href='apply.php'>Go back to the application form</a></p>";
+    exit();
+}
 
-            echo ("$jobref");
-            echo ("$firstname");
-            echo ("$lastname");
-            echo ("$dob");
-            echo ("$gender");
-           echo ("$street");
-           echo ("$suburb");                    
-            echo ("$state");
-           echo ("$postcode");   
-            echo ("$email");
-            echo ("$phone");
-            echo ("$skills");
-          echo ("$otherskills");
+// Insert into database
+$sql = "INSERT INTO eoi (job_ref, first_name, last_name, dob, gender, street_address, suburb, state, postcode, email, phone, skills)
+        VALUES ('$job_ref', '$firstname', '$lastname', '$dob', '$gender', '$street', '$suburb', '$state', '$postcode', '$email', '$phone', '$skills')";
 
+if (mysqli_query($conn, $sql)) {
+    $eoiNumber = mysqli_insert_id($conn);
+    echo "<h1>Application Submitted Successfully</h1>";
+    echo "<p>Thank you, " . htmlspecialchars($firstname) . " " . htmlspecialchars($lastname) . ".</p>";
+    echo "<p>Your Expression of Interest has been recorded with EOI Number: <strong>$eoiNumber</strong></p>";
+    echo "<p><a href='index.php'>Return to Home</a></p>";
+} else {
+    echo "<p>Something went wrong: " . mysqli_error($conn) . "</p>";
+}
 
-          //add generated EOI number and tell user
-        }
-        else{
-            echo "not allowed";   //change with redirect
-        }
-    ?>
-</body>
+mysqli_close($conn);
+?>
