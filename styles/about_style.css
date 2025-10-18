@@ -1,5 +1,3 @@
-
-
 /* ==========================================================================
 Made by Mitul Joarder
 Student ID: 105980686
@@ -8,20 +6,22 @@ Description: CSS for About page and shared styles across the site.
 Note: Variables and some shared styles are in this file for simplicity.
    ========================================================================== */
 
-/* Root palette and typography */
+/* Root palette and typography
+   - Define color variables for easy theme adjustments.
+   - Keep typography and base text color here for site-wide consistency. */
 :root {
-  --bg: #0a0f1a;
-  --panel: #0f1626;
-  --muted: #a8b3c7;
-  --text: #e7edf5;
-  --accent: #00e5ff;
-  --accent-2: #7c4dff;
-  --border: #233142;
+  --bg: #0a0f1a;       /* page background */
+  --panel: #0f1626;    /* darker panel backgrounds */
+  --muted: #a8b3c7;    /* secondary/text-muted color */
+  --text: #e7edf5;     /* primary text color */
+  --accent: #00e5ff;   /* primary accent/link color */
+  --accent-2: #7c4dff; /* secondary accent (unused here but available) */
+  --border: #233142;   /* standard border color across UI */
 }
 
-* { box-sizing: border-box; }
+* { box-sizing: border-box; } /* use border-box for predictable sizing */
 
-html { color-scheme: dark; }
+html { color-scheme: dark; } /* hint to browsers that this is a dark theme */
 
 body {
   margin: 0;
@@ -31,14 +31,18 @@ body {
   background: var(--bg);
 }
 
+/* .container centers content and caps width for readable measure */
 .container {
   width: min(1100px, 92%);
   margin: 0 auto;
 }
 
+/* small helper utility for secondary text */
 .small { font-size: 0.9rem; color: var(--muted); }
 
-/* Header and navigation */
+/* Header and navigation
+   - Header uses subtle gradient and border for separation.
+   - Navigation links are inline and accessible via focus-visible styles. */
 .site-header {
   background: linear-gradient(180deg, rgba(15,22,38,0.95), rgba(15,22,38,0.85));
   border-bottom: 1px solid var(--border);
@@ -52,6 +56,8 @@ body {
 .brand-name { font-weight: 700; letter-spacing: 0.2px; }
 .brand-slogan { font-size: 0.9rem; color: var(--muted); }
 
+/* Navigation list layout and link states
+   - .current uses an outline so it remains visible to keyboard users. */
 .site-nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 1rem; }
 .site-nav a {
   color: var(--text);
@@ -63,7 +69,8 @@ body {
 .site-nav a:focus-visible { background: #131b2c; }
 .site-nav a.current { outline: 2px solid var(--accent); }
 
-/* Figures */
+/* Figures and image cards
+   - Figures are full-width blocks with subtle border and radius to match site panels. */
 figure { margin: 1rem 0; }
 .studio-figure img,
 .group-figure img {
@@ -73,7 +80,9 @@ figure { margin: 1rem 0; }
 .studio-figure figcaption,
 .group-figure figcaption { color: var(--muted); font-size: 0.95rem; margin-top: 0.5rem; }
 
-/* Footer */
+/* Footer
+   - Simple top border and darker background to visually separate from content.
+   - Links in footer use the accent color for emphasis. */
 .site-footer {
   border-top: 1px solid var(--border);
   background: #0b1220;
@@ -82,7 +91,10 @@ figure { margin: 1rem 0; }
 .footer-inner { padding: 1rem 0 2rem; }
 .footer-links { list-style: none; padding: 0; margin: 0.25rem 0 0; display: flex; gap: 1rem; }
 .footer-links a { color: var(--accent); }
-/* About page specifics */
+
+/* About page specifics
+   - .code-tag for inline code appearance.
+   - Member list uses dashed divider to separate entries visually. */
 .code-tag {
   background: #101828;
   padding: 0.2rem 0.4rem;
@@ -95,6 +107,9 @@ figure { margin: 1rem 0; }
 .member dt { font-weight: 700; }
 .student-id { float: right; color: var(--accent); } /* Right side per brief */
 
+/* Fun table
+   - Accessible table spacing and hover state for rows for better scanning.
+   - Header uses a slightly lighter text color for contrast. */
 .fun-table {
   width: 100%;
   border-collapse: collapse;
@@ -114,17 +129,20 @@ figure { margin: 1rem 0; }
 }
 .fun-table tbody tr:hover { background: #0f1728; } /* hover effect */
 
-/* Links and text */
+/* Links and text
+   - Links inherit accent color; hover state brightens for affordance. */
 a { color: var(--accent); }
 a:hover, a:focus-visible { color: #9ef2ff; }
 
-/* Responsive tweaks */
+/* Responsive tweaks
+   - Small adjustments for narrow viewports (stack header/grid). */
 @media (max-width: 800px) {
   .header-inner { flex-wrap: wrap; gap: 0.75rem; }
   .form-grid { grid-template-columns: 1fr; }
 }
 
-/* Reduced motion preference */
+/* Reduced motion preference
+   - Honor user's reduce motion setting by removing transitions/animations. */
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; animation: none !important; }
 }

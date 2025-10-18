@@ -11,20 +11,31 @@ Last modified: 25/09/2025
 Description: CSS sheet for applys.html
 */
 /* Root variables */
+/* Define color palette and reusable tokens for consistent theming across the stylesheet */
 :root {
+  /* Base background color for the page */
   --bg: #0a0f1a;
+  /* Panel / card background */
   --panel: #0f1626;
+  /* Muted text for secondary info */
   --muted: #a8b3c7;
+  /* Primary foreground text color */
   --text: #e7edf5;
+  /* Primary accent (used for buttons, highlights) */
   --accent: #00e5ff;
+  /* Secondary accent (gradient variant) */
   --accent-2: #7c4dff;
+  /* Border color for subtle separators */
   --border: #233142;
 }
 
 /* Global reset */
+/* Ensure consistent box-sizing and respect user color-scheme */
 * { box-sizing: border-box; }
 html { color-scheme: dark; }
 
+/* Page base styles */
+/* Set base font, line-height and background for the whole document */
 body {
   margin: 0;
   font-family: system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
@@ -32,6 +43,8 @@ body {
   color: var(--text);
   background: var(--bg);
 }
+/* Site main panel */
+/* Container panel used for the main content area (card-like appearance) */
 .site-main {
   padding: 1rem;
   background: var(--panel);
@@ -60,6 +73,8 @@ body {
 .brand-name { font-weight: 700; letter-spacing: 0.2px; }
 .brand-slogan { font-size: 0.9rem; color: var(--muted); }
 
+/* Navigation links */
+/* Provide accessible focus/hover states and a 'current' outline for active page */
 .site-nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 1rem; }
 .site-nav a {
   color: var(--text);
@@ -69,13 +84,15 @@ body {
 }
 .site-nav a:hover,
 .site-nav a:focus-visible { background: #131b2c; }
+/* 'current' indicates the active route; use a strong outline for visibility */
 .site-nav a.current { outline: 2px solid var(--accent); }
 
 /* Buttons */
+/* Primary button style uses a gradient and high contrast text */
 .btn {
   display: inline-block;
   background: linear-gradient(90deg, var(--accent), var(--accent-2));
-  color: #001018;
+  color: #001018; /* Dark text improves contrast on the bright gradient */
   padding: 0.6rem 1rem;
   border-radius: 0.5rem;
   text-decoration: none;
@@ -96,6 +113,8 @@ body {
 .footer-links a { color: var(--accent); }
 
 /* Apply page forms */
+/* Form layout */
+/* Grid used for the application form — responsive two-column that collapses on small screens */
 .form-grid {
   display: grid;
   gap: 1rem 1.25rem;
@@ -105,10 +124,15 @@ body {
   border: 1px solid var(--border);
   border-radius: 0.5rem;
 }
+/* Fieldset styling within the form to group related inputs */
 .form-grid fieldset { border: 1px solid var(--border); padding: 0.75rem; border-radius: 0.5rem; }
 .form-grid legend { padding: 0 0.25rem; color: var(--accent); font-weight: 700; }
+
+/* Individual form field */
+/* Use column layout so label sits above inputs for clarity */
 .form-field { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 0.5rem; }
 .form-field label { font-weight: 600; }
+/* Inputs inherit dark background and subtle border to match the theme */
 .form-field input,
 .form-field select,
 .form-field textarea {
@@ -118,6 +142,7 @@ body {
   border-radius: 0.35rem;
   padding: 0.55rem 0.6rem;
 }
+/* Visible focus indication for keyboard users */
 .form-field input:focus-visible,
 .form-field select:focus-visible,
 .form-field textarea:focus-visible {
@@ -137,12 +162,13 @@ a { color: var(--accent); }
 a:hover, a:focus-visible { color: #9ef2ff; }
 
 /* Responsive tweaks */
+/* Collapse header and form columns on narrow viewports for better usability */
 @media (max-width: 800px) {
   .header-inner { flex-wrap: wrap; gap: 0.75rem; }
   .form-grid { grid-template-columns: 1fr; }
 }
 
-/* Reduced motion */
+/* Respect users who prefer reduced motion */
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; animation: none !important; }
 }
