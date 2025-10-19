@@ -30,15 +30,7 @@
 }
 .alert-success {
   background: rgba(0, 229, 255, 0.1);
-  border-left-color: var(--accent);
-  color: #9ef2ff;
-}
 
-.alert-error {
-  background: rgba(255, 82, 82, 0.1);
-  border-left-color: #ff5252;
-  color: #ffb3b3;
-}
 
 /* Management panels */
 .management-panel,
@@ -46,4 +38,4 @@
 .stats-panel {
   background: var(--panel);
   border: 1px solid var(--border);
-  border-radius: 0.5
+  border-radius: 
