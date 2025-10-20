@@ -93,8 +93,8 @@
 
                                 <section class='job-req'>
                                     <h3>Requirements</h3>
+
                                     <h4> Essential Requirements </h4>
-                                    
                                     <ul>";
 
                                         $ess_str = $row['essential_req'];
@@ -109,7 +109,6 @@
 
                                 <h4>Preferrable Requirements</h4>
 
-                                
                             </div>
                             ";
                         }
