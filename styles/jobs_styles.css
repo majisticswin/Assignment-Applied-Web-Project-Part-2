@@ -26,7 +26,7 @@ body {
 
 /* ----- Header layout ----- */
 .site-header {
-    background-color: linear-gradient(180deg, rgba(15,22,38,0.95), rgba(15,22,38,0.85));
+    background-color: linear-gradient(180deg, rgba(15,22,38,0.95), rgba(15,22,38,0.85));;
     border-bottom: 1px solid #233142;
 }
 
@@ -38,7 +38,7 @@ body {
     display: flex;
     align-items: center; 
     justify-content: space-between;
-    padding: 0.75rem 0;
+    padding: 0.75rem 0rem;
 }
 
 /* -----  Hyperlink Styling ----- */
@@ -86,13 +86,14 @@ body {
 
 /* -----  Highlights the current page on the navigation menu ----- */
 .site-nav a.current {
-    outline: #00e5ff 2px solid;
+    border: #00e5ff 2px solid;
+    border-radius: 0.35rem;
 }
 
 /* ----- Navigation Hyperlinks ----- */
 .site-nav a {
     text-decoration: none;
-    color: #00e5ff;
+    color: #e7edf5;
     padding: 0.5rem 0.75em;
     border-radius: 0.35rem;
 }
@@ -239,25 +240,37 @@ main h1 {
 
 /*  ===========  Footer Section Styling Styling  =========== */
 
-.site-footer {
+.footer {
+    background-color:  #0f1626;
+    border: 1px solid #233142;
+    padding: 0.5em;
+    margin: 2em;
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-gap: 5px;
+    justify-content: space-evenly;
+}
+
+    /* Footer */
+    .site-footer {
     border-top: 1px solid #233142;
     background: #0b1220;
     margin-top: 3rem;
-}
+    }
 
-.footer-inner { 
-    padding: 2em 6em 2em; 
-}
-.footer-links { 
-    list-style: none; 
-    padding: 0; 
-    margin: 0.25em 0em 0em; 
-    display: flex; 
-    gap: 1rem;
-}
-.footer-links a, .site-footer a { 
-    color: #00e5ff
-}
+    .footer-inner { 
+        padding: 2em 6em 2em; 
+    }
+    .footer-links { 
+        list-style: none; 
+        padding: 0; 
+        margin: 0.25em 0em 0em; 
+        display: flex; 
+        gap: 1rem;
+    }
+    .footer-links a, .site-footer a { 
+        color: #00e5ff
+    }
 
 /*  ===========  Media Query for Responsive page  =========== */
 @media (max-width: 650px) {
