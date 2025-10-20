@@ -92,12 +92,10 @@ body {
 
 /* ----- Navigation Hyperlinks ----- */
 .site-nav a {
-    display: block;
     text-decoration: none;
     color: #e7edf5;
-    font-size: 16px;
-    margin: 0em;
-    padding: 0.3em 0.75em;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.35rem;
 }
 
 /* ----- Navigation Hyperlinks when Hovered ----- */
