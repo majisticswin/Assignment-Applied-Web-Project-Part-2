@@ -52,6 +52,12 @@
                             echo "
                             <div class='job-position'>
                                 <h2>". $row['title'] ."</h2>
+
+                                <section class='job-details'>
+                                    <h3>Job Details</h3>
+
+                                    
+                                </section>
                             </div>
                             ";
                         }
