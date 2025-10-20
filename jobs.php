@@ -109,8 +109,10 @@
                                     <h4>Preferrable Requirements</h4>
                                     <ul>";
 
+                                        $pref_str = $row['preferrable_req'];
+                                        $pref_req = explode("|", $pref_str);
 
-
+                                        
                                     echo "</ul>
                                 </section>
 
