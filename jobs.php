@@ -57,6 +57,8 @@
                                     <h3>Job Details</h3>
 
                                     <p><strong>Date Posted: </strong>". $row['opening_date']."</p>
+
+                                    <p><strong>Reference Number: </strong>". $row['job_ref']."</p>
                                 </section>
                             </div>
                             ";
