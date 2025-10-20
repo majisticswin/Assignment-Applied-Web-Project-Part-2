@@ -38,35 +38,36 @@ body {
     display: flex;
     align-items: center; 
     justify-content: space-between;
+    padding: 0.75rem 0rem;
 }
 
 /* -----  Hyperlink Styling ----- */
-.header-brand {
+.brand {
     display: inline-flex; 
-    align-items: end;
-    gap: 0.75em;
+    align-items: center;
+    gap: 0.75rem;
     text-decoration: none;
-    color: #e7edf5;
+    color: inherit;
 }
 
 /* -----  Hyperlink when hover Styling ----- */
-.header-brand:hover {
-    color: #a4f3fd;
+.brand:hover {
+    color: #9ef2ff;
 }
 
 /* -----  Container for Company name and Slogan ----- */
-.header-text { 
+.brand-text { 
     display: grid;
 }
 
 /* -----  Company Name Styling ----- */
-.header-name { 
+.brand-name { 
     font-weight: 700; 
     letter-spacing: 0.2px; 
 }
 
 /* -----  Company Name Styling ----- */
-.header-slogan { 
+.brand-slogan { 
     font-size: 0.9em; 
     color: #a8b3c7
 }
