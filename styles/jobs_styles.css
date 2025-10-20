@@ -84,14 +84,6 @@ body {
 
 /*  ===========  Navigation Links Styling  =========== */
 
-/* -----  Menu Layout Styling ----- */
-.site-nav li {
-    display: inline-flex;
-    list-style-type: none;
-    margin: 0em 0.5em;
-    padding: 0em;
-}
-
 /* -----  Highlights the current page on the navigation menu ----- */
 .site-nav a.current {
     border: #00e5ff 2px solid;
