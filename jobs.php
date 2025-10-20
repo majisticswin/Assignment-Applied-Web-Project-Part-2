@@ -30,7 +30,7 @@
 
             <div>
                 <aside class="join-us">
-
+                    <h2> Why Join us!</h2>
                 </aside>
             </div>
             
