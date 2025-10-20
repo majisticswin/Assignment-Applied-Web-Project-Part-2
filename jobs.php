@@ -59,6 +59,10 @@
                                     <p><strong>Date Posted: </strong>". $row['opening_date']."</p>
 
                                     <p><strong>Reference Number: </strong>". $row['job_ref']."</p>
+
+                                    <p><strong>Location: </strong>". $row['location']."</p>
+
+                                    
                                 </section>
                             </div>
                             ";
