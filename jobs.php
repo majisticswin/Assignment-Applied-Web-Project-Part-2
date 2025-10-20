@@ -41,6 +41,15 @@
                 <!-- </aside> -->
             <!-- </div> -->
 
+            <form action="jobs.php" method="GET">  <!-- The action will change the layout of the job.php to only contain matching title name -->
+                <fieldset>
+                    <legend>Job Search</legend>
+                    <label for="search">Search: </label>
+                    <input type="search" name="title" id="title" placeholder="E.g. Network Programmer etc."></input>
+                    <input type="submit" value="Search">
+                </fieldset>
+            </form>
+
             <?php
                 require_once "settings.php";
                 $conn = @mysqli_connect($host,$user,$pwd,$sql_db);
