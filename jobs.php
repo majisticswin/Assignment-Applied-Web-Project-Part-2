@@ -64,6 +64,8 @@
 
                                     <p><strong>Work type: </strong>". $row['job_type']."</p>
 
+                                    <p><strong>Salary: </strong>$".$row['salary']."</p>
+
                                     
                                 </section>
                             </div>
