@@ -120,7 +120,9 @@
                                 </section>
 
                                 <p><strong>Closing Date: ". $row['closing_date']."</strong></p>
-
+                                <form action='apply.html' class='apply-btn'>
+                                    
+                                </form>
 
                             </div>
                             ";
