@@ -62,6 +62,15 @@
                     <input type="text" id="max-salary" name="max-salary" value="350000" pattern="[0-9]*">   <!-- value attribute is needed as both minimum and maximum salary value is added into the SQL query --> 
                     <br>
 
+                    <label for="category">Category: </label>
+                    <select name="category" id="category">                   <!-- Submits value under the id "category" -->
+                        <option value=" ">Select option</option>             <!-- Select option value allows for blank values to be submitted -->
+                        <option value="Programming">Programming</option>
+                        <option value="Design">Design</option>
+                        <option value="Development">Development</option>
+                    </select>
+                    <br>
+
                 </fieldset>
             </form>
 
