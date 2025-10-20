@@ -83,6 +83,10 @@
                                         $resp_str = $row['responsibilities'];
                                         $key_resp = explode("|", $resp_str);
 
+                                        for ($x = 0; $x < count($key_resp); $x++ ) {
+                                            echo "<li><p>".$key_resp[$x]."</p></li>";
+                                        }
+                                        
                                     echo "</ol>
                                 </section>
                             </div>
