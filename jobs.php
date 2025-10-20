@@ -53,7 +53,7 @@
                             <div class='job-position'>
                                 <h2>". $row['title'] ."</h2>
                             </div>
-                            "
+                            ";
                         }
                     } else {
                         echo "No jobs available";
