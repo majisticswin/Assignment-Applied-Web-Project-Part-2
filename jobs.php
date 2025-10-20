@@ -125,7 +125,7 @@
                                 </form>
 
                             </div>
-                            ";
+                            <hr>";
                         }
                     } else {
                         echo "No jobs available";
