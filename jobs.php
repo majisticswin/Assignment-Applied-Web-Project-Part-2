@@ -101,13 +101,13 @@
                     if (isset($_GET['category']) || isset($_GET['location']) || isset($_GET['job_type']) || isset($_GET['min-salary']) || isset($_GET['max-salary'])) {
                         $minSalary = $_GET['min-salary'];
                         $maxSalary = $_GET['max-salary'];
-                        $category = mysqli_real_escape_string($dbconn, $_GET['category']);
-                        $type = mysqli_real_escape_string($dbconn, $_GET['job_type']);
-                        $location = mysqli_real_escape_string($dbconn, $_GET['location']);
+                        $category = mysqli_real_escape_string($conn, $_GET['category']);
+                        $type = mysqli_real_escape_string($conn, $_GET['job_type']);
+                        $location = mysqli_real_escape_string($conn, $_GET['location']);
                         $sql = "SELECT * FROM jobs WHERE category LIKE '%$category%' AND job_type LIKE '%$type%' AND `location` LIKE '%$location%' AND salary BETWEEN $minSalary AND $maxSalary";
-                        $result = mysqli_query($dbconn, $sql);
+                        $result = mysqli_query($conn, $sql);
                         if (mysqli_num_rows($result) > 0) {
-                            include 'job-pos.php';
+                            include 'job-desc.php';
                         } else {
                         echo "No matching jobs found.";
                         }
