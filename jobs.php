@@ -53,7 +53,14 @@
             <form action="jobs.php" method="get">
                 <fieldset>
                     <legend>Filter</legend>
-                        
+
+                    <label for="min-salary">Min. Salary: </label>
+                    <input type="text" id="min-salary" name="min-salary" value="0" pattern="[0-9]*">        <!-- pattern is needed to only accept numerical values -->
+                    <br>
+
+                    <label for="max-salary">Max. Salary: </label>
+                    <input type="text" id="max-salary" name="max-salary" value="350000" pattern="[0-9]*">   <!-- value attribute is needed as both minimum and maximum salary value is added into the SQL query --> 
+                    <br>
 
                 </fieldset>
             </form>
