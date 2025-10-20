@@ -115,9 +115,11 @@
                                         for ($x = 0; $x < count($pref_req); $x++ ) {
                                             echo "<li><p>".$pref_req[$x]."</p></li>";
                                         }
-                                        
+
                                     echo "</ul>
                                 </section>
+
+                                <p><strong>Closing Date: ". $row['closing_date']."</strong></p>
 
 
                             </div>
