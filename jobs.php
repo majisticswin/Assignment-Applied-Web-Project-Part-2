@@ -98,7 +98,20 @@
                 require_once "settings.php";
                 $conn = @mysqli_connect($host,$user,$pwd,$sql_db);
                 if ($conn) {
-                    if (isset($_GET['title'])) {
+                    if (isset($_GET['category']) || isset($_GET['location']) || isset($_GET['job_type']) || isset($_GET['min-salary']) || isset($_GET['max-salary'])) {
+                        $minSalary = $_GET['min-salary'];
+                        $maxSalary = $_GET['max-salary'];
+                        $category = mysqli_real_escape_string($dbconn, $_GET['category']);
+                        $type = mysqli_real_escape_string($dbconn, $_GET['job_type']);
+                        $location = mysqli_real_escape_string($dbconn, $_GET['location']);
+                        $sql = "SELECT * FROM jobs WHERE category LIKE '%$category%' AND job_type LIKE '%$type%' AND `location` LIKE '%$location%' AND salary BETWEEN $minSalary AND $maxSalary";
+                        $result = mysqli_query($dbconn, $sql);
+                        if (mysqli_num_rows($result) > 0) {
+                            include 'job-pos.php';
+                        } else {
+                        echo "No matching jobs found.";
+                        }
+                    } elseif (isset($_GET['title'])) {
                         $title = mysqli_real_escape_string($conn, $_GET['title']);
                         $query = "SELECT * FROM jobs WHERE title LIKE '%$title%'";
                         $result = mysqli_query($conn, $query);
