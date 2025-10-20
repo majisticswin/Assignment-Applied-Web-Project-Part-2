@@ -86,8 +86,14 @@
                                         for ($x = 0; $x < count($key_resp); $x++ ) {
                                             echo "<li><p>".$key_resp[$x]."</p></li>";
                                         }
-                                        
+
                                     echo "</ol>
+
+                                </section>
+
+                                <section class='job-req'>
+                                    <h3>Requirements</h3>
+                                    
                                 </section>
                             </div>
                             ";
