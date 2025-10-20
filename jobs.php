@@ -97,8 +97,10 @@
                                     
                                     <ul>";
 
-                                    
-
+                                        $ess_str = $row['essential_req'];
+                                        $ess_req = explode("|", $ess_str);
+                                        
+                                        
                                     echo "</ul>
                                 </section>
                             </div>
