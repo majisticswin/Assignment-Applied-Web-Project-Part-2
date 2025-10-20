@@ -71,6 +71,16 @@
                     </select>
                     <br>
 
+                    <label for="job_type">Work Type: </label>
+                    <select name="job_type" id="job_type">                  <!-- Submits value under the id "job_type" -->
+                        <option value=" ">Select option</option>
+                        <option value="Full-Time">Full-Time</option>
+                        <option value="Graduate">Graduate</option>
+                        <option value="Internship">Internship</option>
+                        <option value="Contract">Contract</option>
+                    </select>
+                    <br>
+
                 </fieldset>
             </form>
 
