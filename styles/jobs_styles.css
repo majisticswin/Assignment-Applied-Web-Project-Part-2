@@ -74,14 +74,14 @@ body {
 
 /*  ===========  Navigation Menu Styling  =========== */
 
-.menu ul{
+.site-nav ul{
     display: contents;              /* this hides the element and make .menu element the parent of the li elements */
 }
 
 /*  ===========  Navigation Links Styling  =========== */
 
 /* -----  Menu Layout Styling ----- */
-.menu li {
+.site-nav li {
     display: inline-flex;
     list-style-type: none;
     margin: 0em 0.5em;
@@ -89,13 +89,13 @@ body {
 }
 
 /* -----  Highlights the current page on the navigation menu ----- */
-.menu li:nth-child(2) {
+.site-nav a.current {
     border: #00e5ff 2px solid;
     border-radius: 0.5em;
 }
 
 /* ----- Navigation Hyperlinks ----- */
-.menu a {
+.site-nav a {
     display: block;
     text-decoration: none;
     color: #e7edf5;
@@ -105,7 +105,7 @@ body {
 }
 
 /* ----- Navigation Hyperlinks when Hovered ----- */
-.menu a:hover {
+.site-nav a:hover, .site-nav a:focus-visible {
     color: #90c5cb;
     background-color: #233142;
     border-radius: 0.5em;
