@@ -101,8 +101,7 @@ body {
 /* ----- Navigation Hyperlinks when Hovered ----- */
 .site-nav a:hover, .site-nav a:focus-visible {
     color: #90c5cb;
-    background-color: #233142;
-    border-radius: 0.5em;
+    background-color: #131b2c;
 
 }
 
