@@ -68,6 +68,10 @@
 
                                     <p><strong>Reporting Line: </strong>".$row['reporting_line']."</p>
                                 </section>
+
+                                <section class='job-desc'>
+                                    <h3>Short description</h3>
+                                </section>
                             </div>
                             ";
                         }
