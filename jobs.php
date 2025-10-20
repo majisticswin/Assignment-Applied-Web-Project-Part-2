@@ -94,7 +94,12 @@
                                 <section class='job-req'>
                                     <h3>Requirements</h3>
                                     <h4> Essential Requirements </h4>
+                                    
+                                    <ul>";
 
+                                    
+
+                                    echo "</ul>
                                 </section>
                             </div>
                             ";
