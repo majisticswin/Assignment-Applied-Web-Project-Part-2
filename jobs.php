@@ -129,6 +129,7 @@
                             echo "No jobs available";
                         }
                     }
+                    mysqli_close($conn);
                 } else {
                     echo "<p> Unable to connect to database.</p>";
                 }
