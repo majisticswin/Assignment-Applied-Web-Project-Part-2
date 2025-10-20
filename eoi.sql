@@ -92,7 +92,7 @@ CREATE TABLE `jobs` (
   `essential_req` text NOT NULL,          -- (21/10/2025): add new category; used for essential requirements
   `preferrable_req` text NOT NULL,        -- (21/10/2025): add new category; used for preferrable requirements
   `opening_date` date NOT NULL,           -- (21/10/2025): add new category; used for job opening date
-  `closing_date` date DEFAULT NULL
+  `closing_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
