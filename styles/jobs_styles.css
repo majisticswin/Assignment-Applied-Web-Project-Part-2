@@ -6,7 +6,7 @@ Author: Disha Anchan
 
 Created: 11/09/2025
 
-Last modified: 25/09/2025
+Last modified: 21/10/2025
 
 Description: CSS sheet for jobs.html
 */
@@ -25,11 +25,8 @@ body {
 /*  ======================  Header Styling  ====================== */
 
 /* ----- Header layout ----- */
-.header {
-    display: flex;
-    justify-content: space-around;
-    padding: 0.75em 0em;
-    background-color:  #0f1626;
+.site-header {
+    background-color:  linear-gradient(180deg, rgba(15,22,38,0.95), rgba(15,22,38,0.85));
     border: 1px solid #233142;
 }
 
