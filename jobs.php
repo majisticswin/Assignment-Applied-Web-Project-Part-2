@@ -9,6 +9,7 @@
     
     <title>Job Description</title>
 
+    <link rel="stylesheet" href="styles\jobs_styles.css">
 
 </head>
 <body>
