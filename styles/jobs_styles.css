@@ -6,7 +6,7 @@ Author: Disha Anchan
 
 Created: 11/09/2025
 
-Last modified: 21/10/2025
+Last modified: 25/09/2025
 
 Description: CSS sheet for jobs.html
 */
@@ -26,8 +26,8 @@ body {
 
 /* ----- Header layout ----- */
 .site-header {
-    background-color:  linear-gradient(180deg, rgba(15,22,38,0.95), rgba(15,22,38,0.85));
-    border: 1px solid #233142;
+    background-color: linear-gradient(180deg, rgba(15,22,38,0.95), rgba(15,22,38,0.85));
+    border-bottom: 1px solid #233142;
 }
 
 
@@ -38,7 +38,7 @@ body {
     display: flex;
     align-items: center; 
     justify-content: space-between;
-    padding: 0.75rem 0rem;
+    padding: 0.75rem 0;
 }
 
 /* -----  Hyperlink Styling ----- */
@@ -68,8 +68,8 @@ body {
 
 /* -----  Company Name Styling ----- */
 .brand-slogan { 
-    font-size: 0.9em; 
-    color: #a8b3c7
+    font-size: 0.9rem; 
+    color: #a8b3c7;
 }
 
 /*  ===========  Navigation Menu Styling  =========== */
@@ -86,23 +86,21 @@ body {
 
 /* -----  Highlights the current page on the navigation menu ----- */
 .site-nav a.current {
-    border: #00e5ff 2px solid;
-    border-radius: 0.35rem;
+    outline: #00e5ff 2px solid;
 }
 
 /* ----- Navigation Hyperlinks ----- */
 .site-nav a {
     text-decoration: none;
-    color: #e7edf5;
-    padding: 0.5rem 0.75rem;
+    color: #00e5ff;
+    padding: 0.5rem 0.75em;
     border-radius: 0.35rem;
 }
 
 /* ----- Navigation Hyperlinks when Hovered ----- */
 .site-nav a:hover, .site-nav a:focus-visible {
-    color: #90c5cb;
+    color: #9ef2ff;
     background-color: #131b2c;
-
 }
 
 /*  ===========  Main Content Styling  =========== */
@@ -241,37 +239,25 @@ main h1 {
 
 /*  ===========  Footer Section Styling Styling  =========== */
 
-.footer {
-    background-color:  #0f1626;
-    border: 1px solid #233142;
-    padding: 0.5em;
-    margin: 2em;
-    display: grid;
-    grid-template-columns: 33% 33% 33%;
-    grid-gap: 5px;
-    justify-content: space-evenly;
-}
-
-    /* Footer */
-    .site-footer {
+.site-footer {
     border-top: 1px solid #233142;
     background: #0b1220;
     margin-top: 3rem;
-    }
+}
 
-    .footer-inner { 
-        padding: 2em 6em 2em; 
-    }
-    .footer-links { 
-        list-style: none; 
-        padding: 0; 
-        margin: 0.25em 0em 0em; 
-        display: flex; 
-        gap: 1rem;
-    }
-    .footer-links a, .site-footer a { 
-        color: #00e5ff
-    }
+.footer-inner { 
+    padding: 2em 6em 2em; 
+}
+.footer-links { 
+    list-style: none; 
+    padding: 0; 
+    margin: 0.25em 0em 0em; 
+    display: flex; 
+    gap: 1rem;
+}
+.footer-links a, .site-footer a { 
+    color: #00e5ff
+}
 
 /*  ===========  Media Query for Responsive page  =========== */
 @media (max-width: 650px) {
