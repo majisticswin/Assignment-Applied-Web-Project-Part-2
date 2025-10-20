@@ -80,6 +80,8 @@
 
                                     <ol>";
 
+                                        $resp_str = $row['responsibilities'];
+                                        $key_resp = explode("|", $resp_str);
 
                                     echo "</ol>
                                 </section>
