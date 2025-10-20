@@ -54,12 +54,23 @@
                 require_once "settings.php";
                 $conn = @mysqli_connect($host,$user,$pwd,$sql_db);
                 if ($conn) {
-                    $query = "SELECT * FROM jobs";
-                    $result = mysqli_query($conn, $query);
-                    if ($result) {
-                            include "job-desc.php";
+                    if (isset($_GET['title'])) {
+                        $title = mysqli_real_escape_string($dbconn, $_GET['title']);
+                        $query = "SELECT * FROM jobs WHERE title LIKE '%$title%'";
+                        $result = mysqli_query($dbconn, $query);
+                        if (mysqli_num_rows($result) > 0) {
+                            include 'job-pos.php';
+                        } else {
+                            echo "No matching jobs found.";
+                        }
                     } else {
-                        echo "No jobs available";
+                        $query = "SELECT * FROM jobs";
+                        $result = mysqli_query($conn, $query);
+                        if ($result) {
+                                include "job-desc.php";
+                        } else {
+                            echo "No jobs available";
+                        }
                     }
                 } else {
                     echo "<p> Unable to connect to database.</p>";
