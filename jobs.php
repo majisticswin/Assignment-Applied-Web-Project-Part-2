@@ -47,7 +47,14 @@
                 if ($conn) {
                     $query = "SELECT * FROM jobs";
                     $result = mysqli_query($conn, $query);
-
+                    if ($result) {
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            echo "
+                            <div class='job-position'>
+                                <h2>". $row['title'] ."</h2>
+                            </div>
+                            "
+                        }
                     } else {
                         echo "No jobs available";
                     }
