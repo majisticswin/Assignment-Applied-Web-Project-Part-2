@@ -43,9 +43,14 @@
 
             <?php
                 require_once "settings.php";
-                $dbconn = @mysqli_connect($host,$user,$pwd,$sql_db);
-                if ($dbconn) {
-                    echo "Database connection successful";
+                $conn = @mysqli_connect($host,$user,$pwd,$sql_db);
+                if ($conn) {
+                    $query = "SELECT * FROM jobs";
+                    $result = mysqli_query($conn, $query);
+
+                    } else {
+                        echo "No jobs available";
+                    }
                 } else {
                     echo "<p> Unable to connect to database.</p>";
                 }
