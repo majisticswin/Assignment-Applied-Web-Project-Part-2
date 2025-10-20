@@ -71,6 +71,8 @@
 
                                 <section class='job-desc'>
                                     <h3>Short description</h3>
+
+                                    <p>".$row['description']."</p>
                                 </section>
                             </div>
                             ";
