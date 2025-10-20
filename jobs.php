@@ -55,11 +55,11 @@
                 $conn = @mysqli_connect($host,$user,$pwd,$sql_db);
                 if ($conn) {
                     if (isset($_GET['title'])) {
-                        $title = mysqli_real_escape_string($dbconn, $_GET['title']);
+                        $title = mysqli_real_escape_string($conn, $_GET['title']);
                         $query = "SELECT * FROM jobs WHERE title LIKE '%$title%'";
-                        $result = mysqli_query($dbconn, $query);
+                        $result = mysqli_query($conn, $query);
                         if (mysqli_num_rows($result) > 0) {
-                            include 'job-pos.php';
+                            include 'job-desc.php';
                         } else {
                             echo "No matching jobs found.";
                         }
