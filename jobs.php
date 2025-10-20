@@ -22,7 +22,8 @@
     </head>
     <body>
 
-        
+        <?php include 'header.inc'?>        <!-- Attach the Header Section using the header.inc file for layout consistency  -->
+
         
     </body>
 </html>
