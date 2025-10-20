@@ -50,6 +50,14 @@
                 </fieldset>
             </form>
 
+            <form action="jobs.php" method="get">
+                <fieldset>
+                    <legend>Filter</legend>
+                        
+
+                </fieldset>
+            </form>
+
             <?php
                 require_once "settings.php";
                 $conn = @mysqli_connect($host,$user,$pwd,$sql_db);
