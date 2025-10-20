@@ -75,7 +75,11 @@ body {
 /*  ===========  Navigation Menu Styling  =========== */
 
 .site-nav ul{
-    display: contents;              /* this hides the element and make .menu element the parent of the li elements */
+    display: flex;
+    list-style: none;
+    margin: 0rem;
+    padding: 0rem;
+    gap: 1rem;
 }
 
 /*  ===========  Navigation Links Styling  =========== */
