@@ -112,6 +112,9 @@
                                         $pref_str = $row['preferrable_req'];
                                         $pref_req = explode("|", $pref_str);
 
+                                        for ($x = 0; $x < count($pref_req); $x++ ) {
+                                            echo "<li><p>".$pref_req[$x]."</p></li>";
+                                        }
                                         
                                     echo "</ul>
                                 </section>
