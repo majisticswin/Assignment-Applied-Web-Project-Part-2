@@ -105,9 +105,15 @@
                                         }
 
                                     echo "</ul>
+
+                                    <h4>Preferrable Requirements</h4>
+                                    <ul>";
+
+
+
+                                    echo "</ul>
                                 </section>
 
-                                <h4>Preferrable Requirements</h4>
 
                             </div>
                             ";
