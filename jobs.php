@@ -78,7 +78,10 @@
                                 <section class='key-resp'>
                                     <h3>Key Responsibilities</h3>
 
-                                    
+                                    <ol>";
+
+
+                                    echo "</ol>
                                 </section>
                             </div>
                             ";
