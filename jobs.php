@@ -74,6 +74,12 @@
 
                                     <p>".$row['description']."</p>
                                 </section>
+
+                                <section class='key-resp'>
+                                    <h3>Key Responsibilities</h3>
+
+                                    
+                                </section>
                             </div>
                             ";
                         }
