@@ -87,7 +87,7 @@ body {
 /* -----  Highlights the current page on the navigation menu ----- */
 .site-nav a.current {
     border: #00e5ff 2px solid;
-    border-radius: 0.5em;
+    border-radius: 0.35rem;
 }
 
 /* ----- Navigation Hyperlinks ----- */
