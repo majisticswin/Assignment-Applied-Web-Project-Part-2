@@ -56,7 +56,7 @@
                                 <section class='job-details'>
                                     <h3>Job Details</h3>
 
-                                    
+                                    <p><strong>Date Posted: </strong>". $row['opening_date']."</p>
                                 </section>
                             </div>
                             ";
