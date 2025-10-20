@@ -81,6 +81,14 @@
                     </select>
                     <br>
 
+                    <label for="location">Location</label>
+                    <select name="location" id="location">                  <!-- Submits value under the id "location" -->
+                        <option value=" ">Select option</option>
+                        <option value="Melbourne">Melbourne</option>
+                        <option value="Remote">Remote</option>
+                    </select>
+                    <br>
+
                 </fieldset>
             </form>
 
