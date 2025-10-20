@@ -66,7 +66,7 @@
 
                                     <p><strong>Salary: </strong>$".$row['salary']."</p>
 
-                                    
+                                    <p><strong>Reporting Line: </strong>".$row['reporting_line']."</p>
                                 </section>
                             </div>
                             ";
