@@ -100,7 +100,10 @@
                                         $ess_str = $row['essential_req'];
                                         $ess_req = explode("|", $ess_str);
                                         
-                                        
+                                        for ($x = 0; $x < count($ess_req); $x++ ) {
+                                            echo "<li><p>".$ess_req[$x]."</p></li>";
+                                        }
+
                                     echo "</ul>
                                 </section>
                             </div>
