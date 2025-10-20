@@ -6,7 +6,10 @@
     <meta name="description" content="Job Description page with PHP and SQL">
     <meta name="keywords" content="Job, Description, Roles, PHP, Search, SQL">
     <meta name="author" content="Disha Anchan">
+    
     <title>Job Description</title>
+
+
 </head>
 <body>
     
