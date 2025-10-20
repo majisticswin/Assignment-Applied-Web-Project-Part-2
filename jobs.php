@@ -25,7 +25,7 @@
         <?php include 'header.inc'?>        <!-- Attach the Header Section using the header.inc file for layout consistency  -->
 
         <main>
-
+            <h1>Careers</h1>
         </main>
 
         <?php include 'footer.inc'; ?>
