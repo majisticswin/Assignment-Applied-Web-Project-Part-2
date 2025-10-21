@@ -54,7 +54,7 @@
                 <fieldset>
                     <legend>Job Search</legend>
                     <label for="search">Search: </label>
-                    <input type="search" name="title" id="title" placeholder="E.g. Network Programmer etc."></input>
+                    <input type="search" name="title" id="title" placeholder="Enter Job title here"></input>
                     <input type="submit" value="Search">
                 </fieldset>
             </form>
@@ -62,7 +62,7 @@
             <!-- ============================ FILTER SECTION ============================ -->
 
             <!-- A form used to create the Filter section of the job description page  -->
-            <form action="jobs.php" method="get">   <!-- The action will change the layout of the job.php to only contain matching filter options -->
+            <form action="jobs.php" method="GET">   <!-- The action will change the layout of the job.php to only contain matching filter options -->
                 <fieldset>
                     <legend>Filter</legend>
 
@@ -84,7 +84,7 @@
                     <!-- Category Selection using Dropdown Menu -->
                     <label for="category">Category: </label>
                     <select name="category" id="category">                   <!-- Submits value under the id "category" -->
-                        <option value=" ">Select option</option>             <!-- Select option value allows for blank values to be submitted -->
+                        <option value="">Select option</option>             <!-- Select option value allows for blank values to be submitted -->
                         <option value="Programming">Programming</option>
                         <option value="Design">Design</option>
                         <option value="Development">Development</option>
@@ -96,7 +96,7 @@
                     <!-- Work Type Selection using Dropdown Menu -->
                     <label for="job_type">Work Type: </label>
                     <select name="job_type" id="job_type">                  <!-- Submits value under the id "job_type" -->
-                        <option value=" ">Select option</option>
+                        <option value="">Select option</option>
                         <option value="Full-Time">Full-Time</option>
                         <option value="Graduate">Graduate</option>
                         <option value="Internship">Internship</option>
@@ -109,7 +109,7 @@
                     <!-- Location Selection using Dropdown menu -->
                     <label for="location">Location</label>
                     <select name="location" id="location">                  <!-- Submits value under the id "location" -->
-                        <option value=" ">Select option</option>
+                        <option value="">Select option</option>
                         <option value="Melbourne">Melbourne</option>
                         <option value="Remote">Remote</option>
                     </select>
@@ -132,6 +132,8 @@
                 require_once "settings.php";
                 $conn = @mysqli_connect($host,$user,$pwd,$sql_db);
                 if ($conn) {
+
+                    
                     if (isset($_GET['category']) || isset($_GET['location']) || isset($_GET['job_type']) || isset($_GET['min-salary']) || isset($_GET['max-salary'])) {
                         $minSalary = $_GET['min-salary'];
                         $maxSalary = $_GET['max-salary'];
