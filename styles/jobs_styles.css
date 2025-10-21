@@ -25,12 +25,9 @@ body {
 /*  ======================  Header Styling  ====================== */
 
 /* ----- Header layout ----- */
-.header {
-    display: flex;
-    justify-content: space-around;
-    padding: 0.75em 0em;
-    background-color:  #0f1626;
-    border: 1px solid #233142;
+.site-header {
+    background-color: linear-gradient(180deg, rgba(15,22,38,0.95), rgba(15,22,38,0.85));;
+    border-bottom: 1px solid #233142;
 }
 
 
@@ -41,86 +38,70 @@ body {
     display: flex;
     align-items: center; 
     justify-content: space-between;
+    padding: 0.75rem 0rem;
 }
 
 /* -----  Hyperlink Styling ----- */
-.header-brand {
+.brand {
     display: inline-flex; 
-    align-items: end;
-    gap: 0.75em;
+    align-items: center;
+    gap: 0.75rem;
     text-decoration: none;
-    color: #e7edf5;
+    color: inherit;
 }
 
 /* -----  Hyperlink when hover Styling ----- */
-.header-brand:hover {
-    color: #a4f3fd;
+.brand:hover {
+    color: #9ef2ff;
 }
 
 /* -----  Container for Company name and Slogan ----- */
-.header-text { 
+.brand-text { 
     display: grid;
 }
 
 /* -----  Company Name Styling ----- */
-.header-name { 
+.brand-name { 
     font-weight: 700; 
     letter-spacing: 0.2px; 
 }
 
 /* -----  Company Name Styling ----- */
-.header-slogan { 
-    font-size: 0.9em; 
-    color: #a8b3c7
+.brand-slogan { 
+    font-size: 0.9rem; 
+    color: #a8b3c7;
 }
 
 /*  ===========  Navigation Menu Styling  =========== */
-/* -----  Menu Layout Styling ----- */
-.menu {
+
+.site-nav ul{
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0em 0.3em;
-    margin: 0em;
-
-}
-
-.menu ul{
-    display: contents;              /* this hides the element and make .menu element the parent of the li elements */
+    list-style: none;
+    margin: 0rem;
+    padding: 0rem;
+    gap: 1rem;
 }
 
 /*  ===========  Navigation Links Styling  =========== */
 
-/* -----  Menu Layout Styling ----- */
-.menu li {
-    display: inline-flex;
-    list-style-type: none;
-    margin: 0em 0.5em;
-    padding: 0em;
-}
-
 /* -----  Highlights the current page on the navigation menu ----- */
-.menu li:nth-child(2) {
+.site-nav a.current {
     border: #00e5ff 2px solid;
-    border-radius: 0.5em;
+    border-radius: 0.35rem;
 }
 
 /* ----- Navigation Hyperlinks ----- */
-.menu a {
-    display: block;
+.site-nav a {
     text-decoration: none;
     color: #e7edf5;
-    font-size: 16px;
-    margin: 0em;
-    padding: 0.3em 0.75em;
+    padding: 0.5rem 0.75em;
+    border-radius: 0.35rem;
 }
 
 /* ----- Navigation Hyperlinks when Hovered ----- */
-.menu a:hover {
-    color: #90c5cb;
-    background-color: #233142;
-    border-radius: 0.5em;
-
+.site-nav a:hover, .site-nav a:focus-visible {
+    color: #9ef2ff;
+    background-color: #131b2c;
 }
 
 /*  ===========  Main Content Styling  =========== */
