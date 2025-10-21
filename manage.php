@@ -3,8 +3,8 @@
 // ======================================================
 // manage.php
 // Purpose: HR Manager Dashboard for EOI Management
-// Author: Samuel Moore-Coulson (106188960)
-// Date: October 2025
+// Author: Can Van Sang (105325766)
+// Date: 19th October 2025
 // Features:
 // - List all EOIs
 // - Search by job reference
