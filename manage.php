@@ -68,3 +68,26 @@ if ($action == 'delete_by_jobref' && !empty($_POST['job_ref'])) {
     }
     $stmt->close();
 }
+if ($action == 'update_status' && isset($_POST['status']) && isset($_POST['eoi_number'])) {
+    $eoi_number = intval($_POST['eoi_number']);
+    $new_status = $_POST['status'];
+    
+    $valid_statuses = ['New', 'Current', 'Final'];
+    if (in_array($new_status, $valid_statuses)) {
+        $stmt = $conn->prepare("UPDATE eoi SET status = ? WHERE EOInumber = ?");
+        $stmt->bind_param("si", $new_status, $eoi_number);
+        
+        if ($stmt->execute()) {
+            if ($stmt->affected_rows > 0) {
+                $success_msg = "Status updated successfully for EOI #{$eoi_number}";
+            } else {
+                $error_msg = "No changes made or EOI not found.";
+            }
+        } else {
+            $error_msg = "Error updating status: " . htmlspecialchars($stmt->error, ENT_QUOTES, 'UTF-8');
+        }
+        $stmt->close();
+    } else {
+        $error_msg = "Invalid status value.";
+    }
+}
