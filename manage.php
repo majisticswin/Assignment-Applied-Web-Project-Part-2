@@ -158,3 +158,11 @@ if ($result && $result->num_rows > 0) {
         $eoi_results[] = $row;
     }
 }
+$job_refs_query = "SELECT DISTINCT job_ref FROM jobs ORDER BY job_ref";
+$job_refs_result = $conn->query($job_refs_query);
+$job_refs = [];
+if ($job_refs_result && $job_refs_result->num_rows > 0) {
+    while ($row = $job_refs_result->fetch_assoc()) {
+        $job_refs[] = $row['job_ref'];
+    }
+}
