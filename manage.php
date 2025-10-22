@@ -49,3 +49,22 @@ $allowed_sort_fields = ['EOInumber', 'job_ref', 'first_name', 'last_name', 'dob'
 if (!in_array($sort_field, $allowed_sort_fields)) {
     $sort_field = 'EOInumber';
 }
+$action = $_POST['action'] ?? ($_GET['action'] ?? '');
+
+if ($action == 'delete_by_jobref' && !empty($_POST['job_ref'])) {
+    $delete_job_ref = trim($_POST['job_ref']);
+    $stmt = $conn->prepare("DELETE FROM eoi WHERE job_ref = ?");
+    $stmt->bind_param("s", $delete_job_ref);
+    
+    if ($stmt->execute()) {
+        $deleted_count = $stmt->affected_rows;
+        if ($deleted_count > 0) {
+            $success_msg = "Successfully deleted {$deleted_count} EOI(s) for job reference: " . htmlspecialchars($delete_job_ref, ENT_QUOTES, 'UTF-8');
+        } else {
+            $error_msg = "No EOIs found for job reference: " . htmlspecialchars($delete_job_ref, ENT_QUOTES, 'UTF-8');
+        }
+    } else {
+        $error_msg = "Error deleting EOIs: " . htmlspecialchars($stmt->error, ENT_QUOTES, 'UTF-8');
+    }
+    $stmt->close();
+}
