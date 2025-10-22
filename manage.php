@@ -254,3 +254,10 @@ if ($job_refs_result && $job_refs_result->num_rows > 0) {
     <td><?php echo htmlspecialchars($eoi['gender'], ENT_QUOTES, 'UTF-8'); ?></td>
     <td><?php echo htmlspecialchars(date('d/m/Y', strtotime($eoi['dob'])), ENT_QUOTES, 'UTF-8'); ?></td>
     <!-- More cells... -->
+<td>
+  <select name="status[<?php echo htmlspecialchars($eoi['EOInumber'], ENT_QUOTES, 'UTF-8'); ?>]">
+    <option value="New" <?php echo ($eoi['status'] === 'New') ? 'selected' : ''; ?>>New</option>
+    <option value="Current" <?php echo ($eoi['status'] === 'Current') ? 'selected' : ''; ?>>Current</option>
+    <option value="Final" <?php echo ($eoi['status'] === 'Final') ? 'selected' : ''; ?>>Final</option>
+  </select>
+</td>
