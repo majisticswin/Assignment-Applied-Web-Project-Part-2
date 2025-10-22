@@ -37,5 +37,15 @@ if ($conn->connect_error) {
 }
 
 // ... code ...
-
 $conn->close();
+$success_msg = "";
+$error_msg = "";
+$eoi_results = [];
+$search_performed = false;
+$sort_field = isset($_GET['sort']) ? $_GET['sort'] : 'EOInumber';
+$sort_order = isset($_GET['order']) && $_GET['order'] === 'DESC' ? 'DESC' : 'ASC';
+
+$allowed_sort_fields = ['EOInumber', 'job_ref', 'first_name', 'last_name', 'dob', 'email', 'status'];
+if (!in_array($sort_field, $allowed_sort_fields)) {
+    $sort_field = 'EOInumber';
+}
