@@ -245,3 +245,12 @@ if ($job_refs_result && $job_refs_result->num_rows > 0) {
           </button>
         </th>
         <!-- More headers... -->
+<?php foreach ($eoi_results as $eoi): ?>
+  <tr>
+    <td><?php echo htmlspecialchars($eoi['EOInumber'], ENT_QUOTES, 'UTF-8'); ?></td>
+    <td><?php echo htmlspecialchars($eoi['job_ref'], ENT_QUOTES, 'UTF-8'); ?></td>
+    <td><?php echo htmlspecialchars($eoi['first_name'], ENT_QUOTES, 'UTF-8'); ?></td>
+    <td><?php echo htmlspecialchars($eoi['last_name'], ENT_QUOTES, 'UTF-8'); ?></td>
+    <td><?php echo htmlspecialchars($eoi['gender'], ENT_QUOTES, 'UTF-8'); ?></td>
+    <td><?php echo htmlspecialchars(date('d/m/Y', strtotime($eoi['dob'])), ENT_QUOTES, 'UTF-8'); ?></td>
+    <!-- More cells... -->
