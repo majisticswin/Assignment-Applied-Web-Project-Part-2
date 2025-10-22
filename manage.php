@@ -106,3 +106,26 @@ if ($action == 'bulk_update_status' && isset($_POST['status'])) {
     }
     $success_msg = "Status updated successfully for all selected EOIs.";
 }
+$query_conditions = [];
+$params = [];
+$param_types = "";
+
+// Search by job reference
+if (isset($_GET['search_job_ref']) && !empty(trim($_GET['search_job_ref']))) {
+    $search_job_ref = trim($_GET['search_job_ref']);
+    $query_conditions[] = "job_ref = ?";
+    $params[] = $search_job_ref;
+    $param_types .= "s";
+    $search_performed = true;
+}
+
+// Search by applicant name
+if (isset($_GET['search_name']) && !empty(trim($_GET['search_name']))) {
+    $search_name = trim($_GET['search_name']);
+    $search_name_like = "%" . $search_name . "%";
+    $query_conditions[] = "(first_name LIKE ? OR last_name LIKE ?)";
+    $params[] = $search_name_like;
+    $params[] = $search_name_like;
+    $param_types .= "ss";
+    $search_performed = true;
+}
