@@ -91,3 +91,18 @@ if ($action == 'update_status' && isset($_POST['status']) && isset($_POST['eoi_n
         $error_msg = "Invalid status value.";
     }
 }
+if ($action == 'bulk_update_status' && isset($_POST['status'])) {
+    foreach ($_POST['status'] as $eoi_number => $status_value) {
+        $eoi_number = intval($eoi_number);
+        $status_value = trim($status_value);
+        
+        $valid_statuses = ['New', 'Current', 'Final'];
+        if (in_array($status_value, $valid_statuses)) {
+            $stmt = $conn->prepare("UPDATE eoi SET status = ? WHERE EOInumber = ?");
+            $stmt->bind_param("si", $status_value, $eoi_number);
+            $stmt->execute();
+            $stmt->close();
+        }
+    }
+    $success_msg = "Status updated successfully for all selected EOIs.";
+}
