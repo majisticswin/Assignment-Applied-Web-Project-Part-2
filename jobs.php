@@ -53,17 +53,8 @@
             <form action="jobs.php" method="GET">  <!-- The action will change the layout of the job.php to only contain matching title name -->
                 <fieldset>
                     <legend>Job Search</legend>
-<<<<<<< Updated upstream
-                    <label for="search">Search: </label>
-<<<<<<< HEAD
-                    <input type="search" name="title" id="title" placeholder="E.g. Network Programmer etc."></input>
-=======
                     <label for="title">Search: </label>
                     <input type="search" name="title" id="title" placeholder="Enter Job title here">
->>>>>>> Stashed changes
-=======
-                    <input type="search" name="title" id="title" placeholder="Enter Job title here"></input>
->>>>>>> main
                     <input type="submit" value="Search">
                 </fieldset>
             </form>
