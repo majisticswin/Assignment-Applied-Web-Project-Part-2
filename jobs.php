@@ -34,18 +34,18 @@
             
             <h1>Careers</h1>
 
-            <!-- <div> -->
-                <!-- <aside class="join-us"> -->
-                    <!-- <h2> Why Join us!</h2> -->
-                    <!-- <ol> -->
-                        <!-- <li>We offer flexible working options, including remote work opportunities!</li> -->
-                        <!-- <li>We offer a competitive salary that includes additional bonuses as you gain experience!</li> -->
-                        <!-- <li>We offer Extended parental leave for newly families!</li> -->
-                        <!-- <li>Access to discounted mental health assistance!</li> -->
-                        <!-- <li>We are like a family! Be a part of a supportive and inclusive culture!</li> -->
-                    <!-- </ol> -->
-                <!-- </aside> -->
-            <!-- </div> -->
+            <div>
+                <aside class="join-us">
+                    <h2> Why Join us!</h2>
+                    <ol>
+                        <li>We offer flexible working options, including remote work opportunities!</li>
+                        <li>We offer a competitive salary that includes additional bonuses as you gain experience!</li>
+                        <li>We offer Extended parental leave for newly families!</li>
+                        <li>Access to discounted mental health assistance!</li>
+                        <li>We are like a family! Be a part of a supportive and inclusive culture!</li>
+                    </ol>
+                </aside>
+            </div>
 
             <!-- ============================ SEARCH BAR SECTION ======================== -->
             <!-- A form is used to create the Search bar of the job description page  -->
