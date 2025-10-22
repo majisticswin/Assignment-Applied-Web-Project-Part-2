@@ -235,3 +235,13 @@ if ($job_refs_result && $job_refs_result->num_rows > 0) {
   Job Reference to Delete: <input type="text" name="job_ref" required>
   <button type="submit" name="action" value="delete_by_jobref">Delete EOIs</button><br><br>
 </form>
+<?php if (!empty($eoi_results)): ?>
+  <form method="post">
+    <table border='1'>
+      <tr>
+        <th>
+          <button type="button" class="sort-btn" onclick="location.href='manage.php?sort=EOInumber&order=<?php echo ($sort_field === 'EOInumber' && $sort_order === 'ASC') ? 'DESC' : 'ASC'; ?>'">
+            EOI# <?php echo ($sort_field === 'EOInumber') ? ($sort_order === 'ASC' ? '▲' : '▼') : '⇅'; ?>
+          </button>
+        </th>
+        <!-- More headers... -->
