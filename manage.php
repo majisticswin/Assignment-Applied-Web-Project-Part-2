@@ -230,3 +230,8 @@ if ($job_refs_result && $job_refs_result->num_rows > 0) {
   Last Name: <input type="text" name="search_last_name" value="<?php echo isset($_GET['search_last_name']) ? htmlspecialchars($_GET['search_last_name'], ENT_QUOTES, 'UTF-8') : ''; ?>">
   <button type="submit">Search Applicant</button><br><br>
 </form>
+<p>Delete Reference</p>
+<form method="post" onsubmit="return confirm('Are you sure you want to delete all EOIs for this job reference? This action cannot be undone.');">
+  Job Reference to Delete: <input type="text" name="job_ref" required>
+  <button type="submit" name="action" value="delete_by_jobref">Delete EOIs</button><br><br>
+</form>
