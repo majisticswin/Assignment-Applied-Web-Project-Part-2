@@ -28,3 +28,14 @@ if (isset($_SESSION['login_time']) && (time() - $_SESSION['login_time']) > $time
 }
 
 $_SESSION['login_time'] = time();
+require_once("settings.php");
+
+$conn = new mysqli($host, $user, $pwd, $sql_db);
+
+if ($conn->connect_error) {
+    die("Database connection failed: " . htmlspecialchars($conn->connect_error, ENT_QUOTES, 'UTF-8'));
+}
+
+// ... code ...
+
+$conn->close();
