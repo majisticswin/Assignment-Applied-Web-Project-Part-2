@@ -12,7 +12,7 @@
         <title>Job Description</title>
 
         <!-- Link HTML to the CSS document -->
-        <link rel="stylesheet" href="styles\jobs_styles.css">
+        <link rel="stylesheet" href="styles/jobs_styles.css">
 
         <style>
             main hr {
@@ -53,8 +53,13 @@
             <form action="jobs.php" method="GET">  <!-- The action will change the layout of the job.php to only contain matching title name -->
                 <fieldset>
                     <legend>Job Search</legend>
+<<<<<<< Updated upstream
                     <label for="search">Search: </label>
                     <input type="search" name="title" id="title" placeholder="E.g. Network Programmer etc."></input>
+=======
+                    <label for="title">Search: </label>
+                    <input type="search" name="title" id="title" placeholder="Enter Job title here">
+>>>>>>> Stashed changes
                     <input type="submit" value="Search">
                 </fieldset>
             </form>
@@ -122,6 +127,18 @@
                 </fieldset>
             </form>
 
+            <form action="job-process.php" method="GET">
+                <fieldset>
+                    <legend>Sort by</legend>
+                    <input type="radio" name="sort" id="sort" value="date" >
+                    <label for="sort">Date</label>
+                    <input type="radio" name="sort" id="sort" value="null" checked>
+                    <label for="sort">Revelance</label>
+                    <br>
+                    <input type="submit" value="Sort">
+                </fieldset>
+            </form>
+
             <!-- ============================ JOB DESCRIPTION RESULTS SECTION ============================ -->
 
             <?php
@@ -144,6 +161,18 @@
                             include 'job-desc.php';
                         } else {
                         echo "No matching jobs found.";
+                        }
+                    }
+                    
+                // ============================ RETRIEVE DATA USING THE SEARCH BAR SECTION ============================ //
+                    elseif (isset($_GET['title'])) {
+                        $title = mysqli_real_escape_string($conn, $_GET['title']);
+                        $query = "SELECT * FROM jobs WHERE title LIKE '%$title%'";
+                        $result = mysqli_query($conn, $query);
+                        if (mysqli_num_rows($result) > 0) {
+                            include 'job-desc.php';
+                        } else {
+                            echo "No matching jobs found.";
                         }
                     } 
                     
