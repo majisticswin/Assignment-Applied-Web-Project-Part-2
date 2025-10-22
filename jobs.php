@@ -130,6 +130,8 @@
 
                 </fieldset>
             </form>
+            
+            <!-- ================================ SORT BY DATE SECTION ============================ -->
 
             <form action="job-process.php" method="GET">
                 <fieldset>
