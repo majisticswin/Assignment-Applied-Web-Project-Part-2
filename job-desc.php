@@ -1,7 +1,11 @@
 <?php
     while ($row = mysqli_fetch_assoc($result)) {
             echo 
-            "<section class='job-position'>
+            "
+            <p class='search'>Search results: ".mysqli_num_rows($result). " job(s).</p>
+            <br>
+
+            <section class='job-position'>
                 <h2>". $row['title'] ."</h2>
                     <section class='job-details'>
                         <h3>Job Details</h3>
