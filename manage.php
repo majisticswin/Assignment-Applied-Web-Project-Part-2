@@ -261,3 +261,9 @@ if ($job_refs_result && $job_refs_result->num_rows > 0) {
     <option value="Final" <?php echo ($eoi['status'] === 'Final') ? 'selected' : ''; ?>>Final</option>
   </select>
 </td>
+<br>
+      <button type="submit" name="action" value="bulk_update_status">Update Status</button>
+    </form>
+  <?php else: ?>
+    <p>No EOI applications found. Try a different search or <a href="manage.php">view all EOIs</a>.</p>
+  <?php endif; ?>
