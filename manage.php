@@ -267,3 +267,9 @@ if ($job_refs_result && $job_refs_result->num_rows > 0) {
   <?php else: ?>
     <p>No EOI applications found. Try a different search or <a href="manage.php">view all EOIs</a>.</p>
   <?php endif; ?>
+  </div>
+
+    <!-- Footer -->
+    <?php include "footer.inc"; ?>
+  </body>
+</html>
