@@ -166,3 +166,36 @@ if ($job_refs_result && $job_refs_result->num_rows > 0) {
         $job_refs[] = $row['job_ref'];
     }
 }
+?>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="HJDJ IT, IT jobs, software jobs, tech careers, job application, software engineering, developer jobs, IT careers, job openings, apply online">
+    <title>HJDJ IT Manager Portal</title>
+    <link rel="stylesheet" href="styles/styles.css?v2">
+    <link rel="icon" type="image/png" href="images/logoweb.png">
+    <style>
+      select[name^="status"] {
+        width: 100px;
+        padding: 6px;
+        font-size: 13px;
+      }
+      .sort-btn {
+        background: none;
+        border: none;
+        color: #007bff;
+        cursor: pointer;
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <?php include "header.inc"; ?>
+    
+    <nav>
+      <ul class="menu">
+        <li>Manager Site</li>
+        <li><a href="logout.php">Logout</a></li>
+      </ul>
+    </nav>
