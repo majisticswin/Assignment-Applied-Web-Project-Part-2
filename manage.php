@@ -129,3 +129,32 @@ if (isset($_GET['search_name']) && !empty(trim($_GET['search_name']))) {
     $param_types .= "ss";
     $search_performed = true;
 }
+$sql = "SELECT EOInumber, job_ref, first_name, last_name, dob, gender, 
+               street_address, suburb, state, postcode, email, phone, skills, status 
+        FROM eoi";
+
+if (!empty($query_conditions)) {
+    $sql .= " WHERE " . implode(" AND ", $query_conditions);
+}
+
+$sql .= " ORDER BY " . $sort_field . " " . $sort_order;
+
+if (!empty($params)) {
+    $stmt = $conn->prepare($sql);
+    if ($stmt) {
+        $stmt->bind_param($param_types, ...$params);
+        $stmt->execute();
+        $result = $stmt->get_result();
+    } else {
+        $error_msg = "Database query error: " . htmlspecialchars($conn->error, ENT_QUOTES, 'UTF-8');
+        $result = null;
+    }
+} else {
+    $result = $conn->query($sql);
+}
+
+if ($result && $result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $eoi_results[] = $row;
+    }
+}
