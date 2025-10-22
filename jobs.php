@@ -71,19 +71,19 @@
                     <!-- Implement Salary range using two input elements: Min. Salary and Max. Salary -->
                     <!-- Minimum Salary Input element -->
                     <label for="min-salary">Min. Salary: </label>
-                    <input type="text" id="min-salary" name="min-salary" value="0" pattern="[0-9]*">        <!-- pattern is needed to only accept numerical values -->
+                    <input type="text" id="min-salary" name="min-salary" value="0" pattern="[0-9]*" required >        <!-- pattern is needed to only accept numerical values -->
                     <br>
 
                     <!-- Maximum Salary input element -->
                     <label for="max-salary">Max. Salary: </label>
-                    <input type="text" id="max-salary" name="max-salary" value="350000" pattern="[0-9]*">   <!-- value attribute is needed as both minimum and maximum salary value is added into the SQL query --> 
+                    <input type="text" id="max-salary" name="max-salary" value="350000" pattern="[0-9]*" required>   <!-- value attribute is needed as both minimum and maximum salary value is added into the SQL query --> 
                     <br>
 
                     <!-- ============================ CATEGORY FILTER SECTION ============================ -->
 
                     <!-- Category Selection using Dropdown Menu -->
                     <label for="category">Category: </label>
-                    <select name="category" id="category">                   <!-- Submits value under the id "category" -->
+                    <select name="category" id="category">                  <!-- Submits value under the id "category" -->
                         <option value="">Select option</option>             <!-- Select option value allows for blank values to be submitted -->
                         <option value="Programming">Programming</option>
                         <option value="Design">Design</option>
@@ -124,25 +124,27 @@
             
             <!-- ================================ SORT BY DATE SECTION ============================ -->
 
-            <form action="job-process.php" method="GET">
+            <form action="jobs.php" method="GET">
                 <fieldset>
                     <legend>Sort by</legend>
                     <input type="radio" name="sort" id="sort" value="date" >
                     <label for="sort">Date</label>
-                    <input type="radio" name="sort" id="sort" value="null" checked>
+                    <input type="radio" name="sort" id="sort" value="relevance" checked>
                     <label for="sort">Revelance</label>
                     <br>
                     <input type="submit" value="Sort">
                 </fieldset>
             </form>
 
+            <p></p>
+
             <!-- ============================ JOB DESCRIPTION RESULTS SECTION ============================ -->
 
+            <br>
             <?php
 
                 // ============================ DATABASE CONNECTION ============================ //
 
-                
                 require_once "settings.php";
                 $conn = @mysqli_connect($host,$user,$pwd,$sql_db);
                 if ($conn) {
@@ -150,43 +152,85 @@
                 // ============================ RETRIEVE DATA USING THE FILTER SECTION ============================ //
                 
                     if (isset($_GET['category']) || isset($_GET['location']) || isset($_GET['job_type']) || isset($_GET['min-salary']) || isset($_GET['max-salary'])) {
-                        $minSalary = $_GET['min-salary'];
-                        $maxSalary = $_GET['max-salary'];
-                        $category = mysqli_real_escape_string($conn, $_GET['category']);
-                        $type = mysqli_real_escape_string($conn, $_GET['job_type']);
-                        $location = mysqli_real_escape_string($conn, $_GET['location']);
-                        $sql = "SELECT * FROM jobs WHERE category LIKE '%$category%' AND job_type LIKE '%$type%' AND `location` LIKE '%$location%' AND salary BETWEEN $minSalary AND $maxSalary";
-                        $result = mysqli_query($conn, $sql);
+                        $valMinSalary = mysqli_real_escape_string($conn, $_GET['min-salary']);
+                        $valMaxSalary = mysqli_real_escape_string($conn, $_GET['max-salary']);
+                        $valCategory = mysqli_real_escape_string($conn, $_GET['category']);
+                        $valType = mysqli_real_escape_string($conn, $_GET['job_type']);
+                        $valLocation = mysqli_real_escape_string($conn, $_GET['location']);
+
+                        $minSalary = $valMinSalary;
+                        $maxSalary = $valMaxSalary;
+                        $category = "%$valCategory%";
+                        $type = "%$valType%";
+                        $location = "%$valLocation%";
+
+                        $stmt = $conn->prepare("SELECT * FROM jobs WHERE category LIKE ? AND job_type LIKE ? AND `location` LIKE ? AND salary BETWEEN ? AND ?");
+                        $stmt->bind_param("sssii", $category, $type, $location, $minSalary, $maxSalary);
+                        $stmt->execute();
+
+                        $result = $stmt->get_result();
                         if (mysqli_num_rows($result) > 0) {
                             include 'job-desc.php';
                         } else {
-                        echo "No matching jobs found.";
+                        echo 
+                        "
+                        <p class='search'>Search results: ".mysqli_num_rows($result). " job(s).</p>
+                        <br>
+                        <p>No matching jobs found.</p>";
                         }
                     }
                     
                 // ============================ RETRIEVE DATA USING THE SEARCH BAR SECTION ============================ //
                     elseif (isset($_GET['title'])) {
-                        $title = mysqli_real_escape_string($conn, $_GET['title']);
-                        $query = "SELECT * FROM jobs WHERE title LIKE '%$title%'";
-                        $result = mysqli_query($conn, $query);
+                        $valTitle = mysqli_real_escape_string($conn, trim($_GET['title']));
+                        $title = "%$valTitle%";
+                        
+                        $stmt = $conn->prepare("SELECT * FROM jobs WHERE title LIKE ? ");
+                        $stmt->bind_param("s", $title);
+                        $stmt->execute();
+                        
+                        $result = $stmt->get_result();
                         if (mysqli_num_rows($result) > 0) {
                             include 'job-desc.php';
                         } else {
-                            echo "No matching jobs found.";
+                        echo 
+                        "
+                        <p class='search'>Search results: ".mysqli_num_rows($result). " job(s).</p>
+                        <br>
+                        <p>No matching jobs found.</p>";
                         }
                     } 
                     
-                // ============================ RETRIEVE DATA USING THE SEARCH BAR SECTION ============================ //
-                    elseif (isset($_GET['title'])) {
-                        $title = mysqli_real_escape_string($conn, $_GET['title']);
-                        $query = "SELECT * FROM jobs WHERE title LIKE '%$title%'";
-                        $result = mysqli_query($conn, $query);
-                        if (mysqli_num_rows($result) > 0) {
-                            include 'job-desc.php';
+                // ============================ SORTING BY DATE SECTION ============================ //
+                    elseif (isset($_GET['sort'])) {
+                        $sort = mysqli_real_escape_string($conn, $_GET['sort']);
+                        if ($sort == "date") {
+                            $query = "SELECT * FROM jobs ORDER BY opening_date DESC";
+                            $result = mysqli_query($conn, $query);
+                            if ($result) {
+                                include 'job-desc.php';
+                            } else {
+                            echo 
+                            "
+                            <p class='search'>Search results: ".mysqli_num_rows($result). " job(s).</p>
+                            <br>
+                            <p>No matching jobs found.</p>";
+                            }
                         } else {
-                            echo "No matching jobs found.";
+                            $query = "SELECT * FROM jobs";
+                            $result = mysqli_query($conn, $query);
+                            if ($result) {
+                                include 'job-desc.php';
+                            } else {
+                            echo 
+                            "
+                            <p class='search'>Search results: ".mysqli_num_rows($result). " job(s).</p>
+                            <br>
+                            <p>No matching jobs found.</p>";
+                            }
                         }
-                    } 
+
+                    }
                 // ============================ DISPLAY ALL DATA FROM SQL ============================ //
                     else {
                         $query = "SELECT * FROM jobs";
@@ -194,7 +238,11 @@
                         if ($result) {
                                 include "job-desc.php";
                         } else {
-                            echo "No jobs available";
+                            echo 
+                            "
+                            <p class='search'>Search results: ".mysqli_num_rows($result). " job(s).</p>
+                            <br>
+                            <p>No jobs available.</p>";
                         }
                     }
                     mysqli_close($conn);
