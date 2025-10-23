@@ -27,9 +27,6 @@ $pageTitle = "Apply for a Job - Panda Mice";
   </script>
 </head>
 <body>
-  <?php include("header.inc"); ?>
-
-
 <!-- ================= HEADER ================= -->
 <?php include("header.inc"); ?>
 

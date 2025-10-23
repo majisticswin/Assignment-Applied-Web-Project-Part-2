@@ -12,10 +12,6 @@ $pageTitle = "Panda Mice Careers - Join Our Team";
   <meta name="description" content="Explore exciting career opportunities at Panda Mice. Join our Melbourne-based team and grow your career in technology, design, and innovation.">
 </head>
 <body class="home">
-  <?php include("header.inc"); ?>
-
-  <a class="skip-link" href="#main">Skip to main content</a>
-
   <!-- ================= HEADER ================= -->
   <header class="site-header" role="banner">
     <div class="container header-inner">

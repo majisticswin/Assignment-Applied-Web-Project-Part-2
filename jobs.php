@@ -27,8 +27,7 @@
 
         <!-- ============================ HEADER SECTION ============================ -->
 
-        <?php include 'header.inc'?>        <!-- Attach the Header Section using the header.inc file for layout consistency  -->
-
+        <?php include 'header.inc'?>   
         <!-- ============================ MAIN SECTION ============================== -->
         <main>
             

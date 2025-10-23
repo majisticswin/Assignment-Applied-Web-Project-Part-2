@@ -20,10 +20,6 @@ $pageTitle = "About Our Team — Panda Mice";
   </script>
 </head>
 <body>
-  <?php include("header.inc"); ?>
-
-  <a class="skip-link" href="#main">Skip to main content</a>
-
   <!-- ================= HEADER ================= -->
   <?php include("header.inc"); ?>
 
