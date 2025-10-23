@@ -123,6 +123,18 @@
                     </select>
                     <br>
 
+                    <!-- ============================ JOB LISTING SECTION ============================ -->
+                    <label for="listed">Listed: </label>
+                    <select name="listed" id="listed">                       <!-- Submits value under the id "remote" -->
+                        <option value="">Any time</option>                   <!-- Select option value allows for blank values to be submitted -->
+                        <option value="today">Today</option>
+                        <option value="3days">Last 3 days</option>
+                        <option value="7days">Last 7 days</option>
+                        <option value="14days">Last 14 days</option>
+                        <option value="30days">Last 30 days</option>
+                    </select>
+                    <br>                    
+
                     <!-- ============================ FILTER SUBMIT SECTION ============================ -->
 
                     <input type="submit" value="Filter">
