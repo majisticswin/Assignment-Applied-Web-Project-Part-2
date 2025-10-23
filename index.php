@@ -8,7 +8,7 @@ $pageTitle = "Panda Mice Careers - Join Our Team";
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title><?php echo htmlspecialchars($pageTitle, ENT_QUOTES, 'UTF-8'); ?></title>
-  <link rel="stylesheet" href="/styles/index_styles.css">
+  <link rel="stylesheet" href="styles/index_styles.css">
   <meta name="description" content="Explore exciting career opportunities at Panda Mice. Join our Melbourne-based team and grow your career in technology, design, and innovation.">
 </head>
 <body class="home">

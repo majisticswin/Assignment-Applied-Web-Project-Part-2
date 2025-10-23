@@ -11,7 +11,7 @@ $pageTitle = "Apply for a Job - Panda Mice";
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Job Application Form for Panda Mice Careers">
   <title><?php echo htmlspecialchars($pageTitle); ?></title>
-  <link rel="stylesheet" href="/styles/apply_styles.css">
+  <link rel="stylesheet" href="styles/apply_styles.css">
   <script>
     // Simple live validation feedback
     function validateField(input, regex, message) {

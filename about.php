@@ -9,7 +9,7 @@ $pageTitle = "About Our Team — Panda Mice";
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title><?php echo htmlspecialchars($pageTitle); ?></title>
-  <link rel="stylesheet" href="/styles/about_style.css">
+  <link rel="stylesheet" href="styles/about_style.css">
   <meta name="description" content="Meet the Panda Mice recruitment project group: contributions, fun facts, and team photo.">
   <script>
     // Simple accordion toggle for member contributions
