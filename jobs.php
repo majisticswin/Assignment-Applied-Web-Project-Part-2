@@ -113,6 +113,15 @@
                         <option value="Remote">Remote</option>
                     </select>
                     <br>
+                    
+                    <!-- ============================ REMOTE OPTION SECTION ============================ -->
+                    <label for="remote">Remote Option </label>
+                    <select name="remote" id="remote">                       <!-- Submits value under the id "remote" -->
+                        <option value="On-site">On-site</option>             <!-- Select option value allows for blank values to be submitted -->
+                        <option value="Design">Hybrid</option>
+                        <option value="Development">Remote</option>
+                    </select>
+                    <br>
 
                     <!-- ============================ FILTER SUBMIT SECTION ============================ -->
 
