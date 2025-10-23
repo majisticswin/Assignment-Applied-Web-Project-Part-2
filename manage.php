@@ -171,10 +171,9 @@ if ($job_refs_result && $job_refs_result->num_rows > 0) {
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="keywords" content="HJDJ IT, IT jobs, software jobs, tech careers, job application, software engineering, developer jobs, IT careers, job openings, apply online">
-    <title>HJDJ IT Manager Portal</title>
-    <link rel="stylesheet" href="styles/styles.css?v2">
-    <link rel="icon" type="image/png" href="images/logoweb.png">
+    <meta name="keywords" content="IT jobs, software jobs, tech careers, job application, software engineering, developer jobs, IT careers, job openings, apply online">
+    <title>Manager Portal</title>
+    <link rel="stylesheet" href="styles/manage_styles.css">
     <style>
       select[name^="status"] {
         width: 100px;
