@@ -254,6 +254,6 @@
         </main>
         <!-- ============================ FOOTER SECTION ============================ -->
 
-        <?php include 'footer.inc'; ?>          <!-- Attach the Footer Section using the footer.inc file for layout consistency  -->
+        <?php include 'footer.inc'; ?>        
     </body>
 </html>

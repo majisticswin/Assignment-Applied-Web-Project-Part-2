@@ -173,6 +173,4 @@ $pageTitle = "Apply for a Job - Panda Mice";
 <?php include("footer.inc"); ?>
 
 </body>
-<?php include("footer.inc"); ?>
-
 </html>
