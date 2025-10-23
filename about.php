@@ -45,7 +45,7 @@ $pageTitle = "About Our Team — Panda Mice";
     <section aria-labelledby="team-photo">
       <h2 id="team-photo">Team photo</h2>
       <figure class="group-figure">
-        <img src="/images/group.png" alt="Group G01 members smiling together in the studio lounge" width="960" height="540">
+        <img src="images/group.png" alt="Group G01 members smiling together in the studio lounge" width="960" height="540">
         <figcaption>DSViM — we ship, we test, we snack.</figcaption>
       </figure>
     </section>
@@ -135,6 +135,4 @@ $pageTitle = "About Our Team — Panda Mice";
   <!-- ================= FOOTER ================= -->
   <?php include("footer.inc"); ?>
 </body>
-<?php include("footer.inc"); ?>
-
 </html>
