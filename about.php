@@ -9,7 +9,7 @@ $pageTitle = "About Our Team — Panda Mice";
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title><?php echo htmlspecialchars($pageTitle); ?></title>
-  <link rel="stylesheet" href="/styles/about_style.css">
+  <link rel="stylesheet" href="styles/about_style.css">
   <meta name="description" content="Meet the Panda Mice recruitment project group: contributions, fun facts, and team photo.">
   <script>
     // Simple accordion toggle for member contributions
@@ -20,10 +20,6 @@ $pageTitle = "About Our Team — Panda Mice";
   </script>
 </head>
 <body>
-  <?php include("header.inc"); ?>
-
-  <a class="skip-link" href="#main">Skip to main content</a>
-
   <!-- ================= HEADER ================= -->
   <?php include("header.inc"); ?>
 
@@ -49,7 +45,7 @@ $pageTitle = "About Our Team — Panda Mice";
     <section aria-labelledby="team-photo">
       <h2 id="team-photo">Team photo</h2>
       <figure class="group-figure">
-        <img src="/images/group.png" alt="Group G01 members smiling together in the studio lounge" width="960" height="540">
+        <img src="images/group.png" alt="Group G01 members smiling together in the studio lounge" width="960" height="540">
         <figcaption>DSViM — we ship, we test, we snack.</figcaption>
       </figure>
     </section>
@@ -139,6 +135,4 @@ $pageTitle = "About Our Team — Panda Mice";
   <!-- ================= FOOTER ================= -->
   <?php include("footer.inc"); ?>
 </body>
-<?php include("footer.inc"); ?>
-
 </html>

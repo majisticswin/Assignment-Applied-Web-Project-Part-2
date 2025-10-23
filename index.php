@@ -8,19 +8,15 @@ $pageTitle = "Panda Mice Careers - Join Our Team";
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title><?php echo htmlspecialchars($pageTitle, ENT_QUOTES, 'UTF-8'); ?></title>
-  <link rel="stylesheet" href="/styles/index_styles.css">
+  <link rel="stylesheet" href="styles/index_styles.css">
   <meta name="description" content="Explore exciting career opportunities at Panda Mice. Join our Melbourne-based team and grow your career in technology, design, and innovation.">
 </head>
 <body class="home">
-  <?php include("header.inc"); ?>
-
-  <a class="skip-link" href="#main">Skip to main content</a>
-
   <!-- ================= HEADER ================= -->
   <header class="site-header" role="banner">
     <div class="container header-inner">
       <a class="brand" href="index.php" aria-label="Panda Mice home">
-        <img src="/images/Panda Mice-logo.png" alt="Panda Mice logo" width="56" height="56">
+        <img src="images/Panda Mice-logo.png" alt="Panda Mice logo" width="56" height="56">
         <span class="brand-text">
           <span class="brand-name">Panda Mice</span>
           <span class="brand-slogan">Careers Beyond the Bounds</span>
