@@ -7,8 +7,6 @@
 
 -- Use the correct database
 USE project2_db;
-
-
 DROP TABLE IF EXISTS users;
 
 -- Create users table with proper structure
