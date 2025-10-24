@@ -3,7 +3,7 @@
 // login.php
 // Purpose: Secure login page for HR manager access
 // Author: Can Van Sang (105325766)
-// Date: 19th October 2025
+// Date: 24th October 2025
 // ======================================================
 
 // Start session to track logged-in users
@@ -47,37 +47,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
             if ($result->num_rows === 1) {
                 $user = $result->fetch_assoc();
+                $storedPassword = $user['password'];
                 
-                // Check if password is hashed (starts with $2y$ for bcrypt)
-                if (strpos($user['password'], '$2y$') === 0) {
-                    // Use password_verify for hashed passwords
-                    if (password_verify($password, $user['password'])) {
-                        // Login successful
-                        $_SESSION['logged_in'] = true;
-                        $_SESSION['user_id'] = $user['user_id'];
-                        $_SESSION['username'] = $user['username'];
-                        $_SESSION['login_time'] = time();
-// Redirect to manage page
-                        header("Location: manage.php");
-                        exit();
-                    } else {
-                        $error = "Invalid username or password.";
-                    }
+                // Check if password matches (plain text or hashed)
+                $passwordMatch = false;
+                
+                // Try hashed password first
+                if (strpos($storedPassword, '$2y$') === 0) {
+                    $passwordMatch = password_verify($password, $storedPassword);
                 } else {
-                    // Plain text password (for backward compatibility)
-                    if ($password === $user['password']) {
-                        // Login successful
-                        $_SESSION['logged_in'] = true;
-                        $_SESSION['user_id'] = $user['user_id'];
-                        $_SESSION['username'] = $user['username'];
-                        $_SESSION['login_time'] = time();
-                        
-                        // Redirect to manage page
-                        header("Location: manage.php");
-                        exit();
-                    } else {
-                        $error = "Invalid username or password.";
-                    }
+                    // Fallback to plain text comparison
+                    $passwordMatch = ($password === $storedPassword);
+                }
+                
+                if ($passwordMatch) {
+                    // Login successful
+                    $_SESSION['logged_in'] = true;
+                    $_SESSION['user_id'] = $user['user_id'];
+                    $_SESSION['username'] = $user['username'];
+                    
+                    // Redirect to manage page
+                    header("Location: manage.php");
+                    exit();
+                } else {
+                    $error = "Invalid username or password.";
                 }
             } else {
                 $error = "Invalid username or password.";
@@ -89,6 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $conn->close();
     }
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en-AU">
@@ -110,6 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <h1>HR Manager Login</h1>
     <p class="small">Please login to access the EOI management system.</p>
 
+    <!-- Error Message -->
     <?php if (!empty($error)): ?>
       <div class="alert alert-error" role="alert">
         <strong>Error:</strong> <?php echo htmlspecialchars($error, ENT_QUOTES, 'UTF-8'); ?>
@@ -152,8 +147,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       </div>
     </form>
 
+    <!-- Helper Text -->
     <div class="login-help">
-      <p class="small"><strong>For marker access:</strong> Username: <code>Admin</code> / Password: <code>Admin</code></p>
+      <p class="small"><strong>Marker Access:</strong> Username: <code>Admin</code> / Password: <code>Admin</code></p>
     </div>
   </main>
 
