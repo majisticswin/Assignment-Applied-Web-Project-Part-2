@@ -3,7 +3,7 @@
 // login.php
 // Purpose: Secure login page for HR manager access
 // Author: Can Van Sang (105325766)
-// Date: 24th October 2025
+// Date: 19th October 2025
 // ======================================================
 
 // Start session to track logged-in users
