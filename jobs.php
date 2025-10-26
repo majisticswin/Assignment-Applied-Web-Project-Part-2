@@ -2,6 +2,7 @@
 <!-- // Filename: jobs.php -->
 <!-- // Purpose: Main Page for Jobs. Displays a list of job summaries-->
 <!-- // Author: Disha Anchan (103031430)-->
+<!-- // Date: 25th October 2025 -->
 <!-- // ====================================================== -->
 
 <!DOCTYPE html>
