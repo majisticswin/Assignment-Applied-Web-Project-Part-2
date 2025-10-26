@@ -69,19 +69,11 @@
                         if (isset($_GET['jobref'])) {
                             $job_ref = mysqli_real_escape_string($conn, $_GET['jobref']);       // escape any special charcters 
 
-                            // Running SQL query using prepared statements
-
-                            // Prepare query with placeholders for prepared statements
-                            $stmt = $conn->prepare("SELECT * FROM jobs WHERE job_ref = ? ");
-
-                             // Bind all the variables into the SQL Query
-                            $stmt->bind_param("s", $job_ref);
-
-                            // Execute the safe and secure SQL query to the database
-                            $stmt->execute();
+                            // prepare the SQL query statement
+                            $query = "SELECT * FROM jobs WHERE job_ref = '$job_ref'";
 
                             // Get SQL query results
-                            $result = $stmt->get_result();
+                            $result = mysqli_query($conn, $query);
                             if ($result) {
                                 while ($row = mysqli_fetch_assoc($result)) {
                                     $OpenDate = htmlspecialchars($row['opening_date']);         // Convert special characters into HTML Entities
