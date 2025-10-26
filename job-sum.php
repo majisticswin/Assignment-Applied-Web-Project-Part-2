@@ -58,11 +58,11 @@
                 </div>
 
                 <div class='info-btn'>
-                    <a aria-label='Find out more about the job' href='job-desc.php?jobref=". $encodeRow ."'>Find out more!</a>"
+                    <a aria-label='Find out more about the job' href='job-desc.php?jobref=". $encodeRow ."'>Find out more!</a>";
                     // Embedded the encode string into the URL to open up the job related to the job reference number.
                     // When clicked, it will be open a new page containing a detailed job description with the specified job reference number 
                     // Gotten help from Mitul Joarder with embedding the string into the URL
-                echo"</div> 
+                echo "</div> 
         </div>
         ";
     }
