@@ -111,7 +111,7 @@
 
                                                 <section class='job-req' aria-labelledby='job-req'>
                                                     <h3 id='job-req'>Requirements</h3>
-                                                    <section aria-labelledby='ess-req'>
+                                                    <section class='essen-req' aria-labelledby='ess-req'>
                                                         <h4 id='ess-req'> Essential Requirements </h4>
                                                         <ul>";
                                                         
@@ -123,7 +123,7 @@
 
                                                         echo "</ul>
                                                     </section>
-                                                    <section aria-labelledby='prefer-req'>
+                                                    <section class='pref-req' aria-labelledby='prefer-req'>
                                                         <h4 id='prefer-req'>Preferrable Requirements</h4>
                                                         <ul>";
 
