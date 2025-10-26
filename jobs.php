@@ -33,11 +33,12 @@
         <main class="site-main">
 
             <!-- ============================ HERO SECTION ============================== -->
-            <!-- A Hero image with a list of the benefits on why work with PandaMice company -->
+            <!-- A Hero image with a list of the benefits on why work with PandaMice company in order to attract users and visual aethetic -->
 
             <div class="hero">
                 <div class="hero-content">
 
+                    <!-- Embedded image for the Hero image -->
                     <img src="images/careers.jpg" alt="A group of developers working on computers">
 
                     <!-- List of benefits when working with PandaMice -->
@@ -200,7 +201,7 @@
                     </div>
                 </form>  
 
-                <!-- ============================ JOB DESCRIPTION RESULTS SECTION ============================ -->
+                <!-- ============================ JOB SUMMARY RESULTS SECTION ============================ -->
 
                 <?php
                     // ============================ DATABASE CONNECTION ============================ //
@@ -211,15 +212,15 @@
                     if ($conn) {
 
                         // Check if all values after submit are null
-                        $title = isset($_GET['title']);
-                        $minSalary = isset($_GET['min-salary']);
-                        $maxSalary = isset($_GET['max-salary']);
-                        $category = isset($_GET['category']);
-                        $type = isset($_GET['job_type']);
-                        $location = isset($_GET['location']);
-                        $remote = isset($_GET['remote']);
-                        $listed = isset($_GET['listed']);
-                        $sort = isset($_GET['sort']);
+                        $title = isset($_GET['title']);                 // Job Title
+                        $minSalary = isset($_GET['min-salary']);        // Minimum Salary
+                        $maxSalary = isset($_GET['max-salary']);        // Maximum Salary
+                        $category = isset($_GET['category']);           // Category = e.g. Development, Programming etc.
+                        $type = isset($_GET['job_type']);               // Employment Type = e.g. Full-Time
+                        $location = isset($_GET['location']);           // Location
+                        $remote = isset($_GET['remote']);               // Remote options = e.g. Remote, Hybrid etc.
+                        $listed = isset($_GET['listed']);               // Date job was posted on
+                        $sort = isset($_GET['sort']);                   // Sort value = e.g. by date or relevance
 
                         if ($title || $minSalary || $maxSalary || $category || $type || $location || $remote || $listed || $sort) {
 
@@ -261,7 +262,7 @@
                             }
 
                             // Prepare the values to be inserted into SQL Query using prepared statements
-                            $title = "%$valTitle%";             //
+                            $title = "%$valTitle%";             
                             $category = "%$valCategory%";
                             $type = "%$valType%";
                             $location = "%$valLocation%";
@@ -406,7 +407,6 @@
                                 </div>";                          
                             } else {
                                 // No matched results
-
                                 echo 
                                 "
                                 <div class='search-result'>
