@@ -242,7 +242,7 @@
                             $getListed = $_GET['listed'];
                             $sort = $_GET['sort'];
                             $getToday = date("Y-m-d");
-                                                                                                // gets the current date to
+                                                                                                // gets the current date
                                                                                                 // NOTE: Found the function from the following website
                                                                                                 // Link: https://www.w3schools.com/php/func_date_date.asp
                             
@@ -426,7 +426,8 @@
                                         <p>Search results: ".mysqli_num_rows($result). " job(s).</p>
                                     </div>
                                     <div class='job-container'>";
-                                        include "job-sum.php";
+                                        include "job-sum.php";                                      // Attaches the job-sum.php to create a list of job summary to be displayed on the webpage 
+                                                                                                    // Refer to job-sum.php to see the code.
                                 echo "</div>
                                 </div>"; 
                             } else {
