@@ -32,36 +32,41 @@
         // =============== Job Summary Format ================== 
         echo                                                        // Render the Job Summary content dynamically
         "
-        <div class='job-summary' aria-label='Job Summary'>
-                <h2>". $row['title'] ."</h2>
-                <section class='job-details' aria-labelledby='job-details'>
-                    <h3 id='job-details'>Job Details</h3>
+        <div class='job-summary' aria-label='Job Summary'>";
+                // Job Title
+                echo "<h2>". $row['title'] ."</h2>";
+                // Job Details Sections
+                echo "<section class='job-details' aria-labelledby='job-details'>
+                    <h3 id='job-details'>Job Details</h3>";
+                    // Job Date Posted
+                    echo "<p><strong>Posted on ". $OpenDate ."</strong></p>";
+                    // Job Location
+                    echo "<p><strong>Location: </strong>". htmlspecialchars($row['location'])." (". htmlspecialchars($row['remote']) .") </p>";
+                    // Employment Type
+                    echo"<p><strong>Employment type: </strong>". htmlspecialchars($row['job_type'])."</p>";
+                    // Salary
+                    echo "<p><strong>Salary: </strong>$".htmlspecialchars($row['salary'])."</p>
 
-                    <p><strong>Posted on ". $OpenDate ."</strong></p>
+                </section>";
 
-                    <p><strong>Location: </strong>". htmlspecialchars($row['location'])." (". htmlspecialchars($row['remote']) .") </p>
-
-                    <p><strong>Work type: </strong>". htmlspecialchars($row['job_type'])."</p>
-
-                    <p><strong>Salary: </strong>$".htmlspecialchars($row['salary'])."</p>
-
-                </section>
-
-                <section class='job-desc' aria-labelledby='job-desc'>
+                // Job Description Section
+                echo "<section class='job-desc' aria-labelledby='job-desc'>
                     <h3 id='job-desc'>Short description</h3>
 
                     <p>".htmlspecialchars($row['description'])."</p>
-                </section>
-                
-                <div class='close-date'>
-                    <p><strong>Closing on ". $CloseDate ."</strong></p>
-                </div>
+                </section>";
 
-                <div class='info-btn'>
+                // Job Application Closing Date
+                echo "<div class='close-date'>
+                    <p><strong>Closing on ". $CloseDate ."</strong></p>
+                </div>";
+
+                // Find out more button ---> Opens up job-desc.php to show a detailed verion of the job summary
+                echo "<div class='info-btn'>
                     <a aria-label='Find out more about the job' href='job-desc.php?jobref=". $encodeRow ."'>Find out more!</a>";
                     // Embedded the encode string into the URL to open up the job related to the job reference number.
-                    // When clicked, it will be open a new page containing a detailed job description with the specified job reference number 
-                    // Gotten help from Mitul Joarder with embedding the string into the URL
+                    // When clicked, it will be open a job-desc.php passing the variable, which will open a detailed job description with the specified job reference number 
+                    // Gotten help from Mitul Joarder with embedding the string into the URL and linking it to the job-desc.php
                 echo "</div> 
         </div>
         ";
