@@ -1,0 +1,246 @@
+/* ============================================================================== */
+/* 
+    Filename: jobs_style.css
+    Author: Disha Anchan
+    Created: 25/10/2025
+    Last Modified: 25/10/2025
+    Description: CSS stylesheet for jobs-desc.php
+*/
+/* ============================================================================== */
+
+/* ======================  Colour palette for the webpage  ====================== */
+
+    /* root variables */
+    :root {
+    /* Base background color for the page */
+    --bg: #0a0f1a;
+    /* Panel / card background */
+    --panel: #0f1626;
+    /* Muted text for secondary info */
+    --muted: #a8b3c7;
+    /* Primary foreground text color */
+    --text: #e7edf5;
+    /* Primary accent (used for buttons, highlights) */
+    --accent: #00e5ff;
+    /* Secondary accent (gradient variant) */
+    --accent-2: #7c4dff;
+    /* Border color for subtle separators */
+    --border: #233142;
+    }
+
+/* ========================== Global reset ====================== */
+/* Ensure consistent box-sizing and respect user color-scheme */
+* { box-sizing: border-box; }
+html { color-scheme: dark; }
+
+/* Page base styles */
+/* Set base font, line-height and background for the whole document */
+body {
+  margin: 0;
+  font-family: system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--bg);
+}
+/* Site main panel */
+/* Container panel used for the main content area (card-like appearance) */
+.container {
+  width: min(1100px, 92%);
+  margin: 0 auto;
+}
+
+.small { font-size: 0.9rem; color: var(--muted); }
+
+/*  ======================  Header Styling  ====================== */
+/* Header & navigation */
+.site-header {
+  background: linear-gradient(180deg, rgba(15,22,38,0.95), rgba(15,22,38,0.85));
+  border-bottom: 1px solid var(--border);
+}
+.header-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.75rem 0;
+}
+.brand { display: inline-flex; align-items: center; gap: 0.75rem; text-decoration: none; color: inherit; }
+.brand-text { display: grid; }
+.brand-name { font-weight: 700; letter-spacing: 0.2px; }
+.brand-slogan { font-size: 0.9rem; color: var(--muted); }
+
+/* Navigation links */
+/* Provide accessible focus/hover states and a 'current' outline for active page */
+.site-nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 1rem; }
+.site-nav a {
+  color: var(--text);
+  text-decoration: none;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.35rem;
+}
+.site-nav a:hover,
+.site-nav a:focus-visible { background: #131b2c; }
+/* 'current' indicates the active route; use a strong outline for visibility */
+.site-nav a.current { outline: 2px solid var(--accent); }
+
+/*  ======================  Main Content Styling  ====================== */
+/* ====================== Hero Styling ====================== */
+.hero {
+    border-bottom: var(--border) 1px solid;
+    display: inline-flex;
+    justify-content: center;
+    padding: 0rem;
+    width: 100%;
+    background-color: #1c2c40;
+}
+
+.hero-content {
+    display: inline-flex;
+    justify-content: space-evenly;
+    gap: 5rem;
+    align-items: center;
+    width: 100%;
+    padding: 0rem;
+    margin: 0rem;
+}
+
+.hero img {
+    flex-grow: 1;
+    width: 60%;
+    height: fit-content;
+    border-left: var(--border) 2px solid;
+}
+
+aside {
+    width: 25%;
+    float: right;
+    border-radius: 1em;
+    background-color: var(--panel);
+    border:var(--accent) 3px solid;
+    margin: 1rem 5rem 1rem 0rem;
+    padding: 0.5rem;
+}
+
+/* ----- "Why join Us" Aside Reasons Styling ----- */
+.hero li {
+
+    margin: 0.3em 0em;
+    padding: 0em;
+}
+
+.hero h1 {
+    margin: 0.5em;
+    width: 80%;
+}
+
+.hero p {
+    margin: 0.5em 1em;
+}
+/*  ===========  Job Summary Section Styling  =========== */
+
+/*  ===========  Job Description Section Styling  =========== */
+
+.job-position {
+    width: 100%;
+    margin: 1em 0em 0em;
+    padding: 0em 1em;
+
+}
+
+/* ----- Job Description Main Heading ----- */
+.job-position h2 {
+    color: #e7edf5;
+    display: inline-block;
+    font-size: 30px;
+    margin: 0em;
+    padding: 0em;
+}
+
+/* ----- Job Description Subsection Heading ----- */
+.job-details h3, .job-desc h3, .key-resp h3, .job-req h3 {
+    color:  #e7edf5;
+    font-size: 24px;
+    margin: 1em 1em 1em;
+}
+
+
+/*  ===========  "Job Details" Section Styling  =========== */
+
+/* Styling for Reference Number, Salary and Reporting Line Heading */
+.job-details strong {
+    color:  #e7edf5;
+    margin: 0em 0.5em 0em 1em;
+    
+}
+
+/*  ===========  "Key Responsibilities" Section  Styling  =========== */
+
+.key-resp ol {
+    margin: 0em 3em;
+    padding: 0em 2em;
+}
+
+/*  ===========  "Job Requirements" Section Styling  =========== */
+
+.job-req h4 {
+    color:  #e7edf5;
+    font-size: 18px;
+    margin: 1em 1em 0.5em 1.5em;
+}
+
+.job-req ul {
+    display: inline-block; 
+}
+
+.job-position p {
+    margin: 0em 1em;
+}
+
+.close-date p {
+    margin: 1em;
+    font-size: 18px;
+}
+
+/*  ===========  "Apply Now" and "Return to Jobs Page" Button Styling  =========== */
+
+.apply-btn {
+    display: inline-block;
+    margin: 2em 1em 1em;
+
+}
+
+.apply-btn a, .return-btn a {
+    border-radius: 0.7em;
+    background: linear-gradient(90deg, #00e5ff, #7c4dff);
+    color: #001018;
+    margin: 0em;
+    padding: 1.2em;
+    font-size: 18px;
+    font-weight: bold;
+    border: 1px solid #233142;
+    text-decoration: none;
+
+}
+
+.return-btn a {
+    padding: 0.9em;
+}
+
+.return-btn {
+    display: inline-block;
+    margin: 2em 0em 2em;
+}
+
+.btn a:hover, .return-btn a:hover {
+    background: linear-gradient(90deg, #a4f3fd, #c8b5fc);
+    color: #233142;
+}
+
+
+/* Footer */
+.site-footer {
+  border-top: 1px solid var(--border);
+  background: #0b1220;
+  margin-top: 3rem;
+}
+.footer-inner { padding: 1rem 0 2rem; }
+.footer-links { list-style: none; padding: 0; margin: 0.25rem 0 0; display: flex; gap: 1rem; }
+.footer-links a, .footer-inner a { color: var(--accent); }
+
