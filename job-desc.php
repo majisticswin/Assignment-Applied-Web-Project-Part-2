@@ -188,11 +188,11 @@
                                                 </div>";
                                                 // Apply Now Button
                                                 echo "<div class='apply-btn'>
-                                                    <a aria-label='Apply for the job' href='apply.php?jobref=$encodeRow'>Apply Now!</a>"
+                                                    <a aria-label='Apply for the job' href='apply.php?jobref=$encodeRow'>Apply Now!</a>";
                                                     // Embedded the encode string into the URL to open up the job related to the job reference number.
                                                     // When clicked, it will pass the variable into apply.php and fill in the job reference number into the respective field
                                                     // This idea was suggested by Mitul Joarder and he assisted with code.
-                                                "</div>
+                                                echo "</div>
                                         </div>
                                     </div>
                                     ";
