@@ -244,7 +244,7 @@ input, select, label {
 
 /* Formatting the layout of the filter section to make it more structured and uniform  */
 .min-salary, .max-salary, .category, .job_type, .location, .remote, .listed {
-    margin: 0rem;
+    margin: 0.5rem 0rem;
     display: grid;
     grid-template-columns: 50% 50%;
     align-items: center;
@@ -277,7 +277,7 @@ input, select, label {
 .location select:focus, .location select:focus-visible, 
 .remote select:focus, .remote select:focus-visible,
 .listed select:focus, .listed select:focus-visible {
-    border: #00b7cc 5px solid;
+    outline: #00b7cc 2px solid;
 }
 /*  ===========  Job Summary Section Styling  =========== */
 
