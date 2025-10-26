@@ -14,14 +14,6 @@
         <!-- Link HTML to the CSS document -->
         <link rel="stylesheet" href="styles/jobs_main_styles.css">
 
-        <style>
-            main hr {
-            width: 100%;
-            border: 0.5px solid #233142;
-            margin: 2em 0em;
-        }
-        </style>
-
     </head>
     <body>
 
