@@ -16,16 +16,24 @@
 
     </head>
     <body>
-
         <!-- ============================ HEADER SECTION ============================ -->
 
-        <?php include 'header.inc'?> 
+        <?php include 'header.inc'?>   <!-- Include the header.inc file for layout consistency -->
 
         <!-- ============================ MAIN SECTION ============================== -->
+        <!-- Contains the hero image, search bar, filter and sort fields and the listed job summary from the database -->
+
         <main class="site-main">
+
+            <!-- ============================ HERO SECTION ============================== -->
+            <!-- A Hero image with a list of the benefits on why work with PandaMice company -->
+
             <div class="hero">
                 <div class="hero-content">
+
                     <img src="images/careers.jpg" alt="A group of developers working on computers">
+
+                    <!-- List of benefits when working with PandaMice -->
                     <aside aria-labelledby='benefits'>
                         <h1 id='benefits'>Reasons to join the team!</h1>
                         <ul>
@@ -36,37 +44,67 @@
                             <li><p>Be a part of a supportive and inclusive culture!</p></li>
                         </ul>
                     </aside>
+
                 </div>
             </div>
 
             <div class="container jobs-page">
-                <form action="jobs.php" method="GET">  <!-- The action will change the layout of the job.php to only contain matching title name -->
+
+                <!-- ============================ FORM SECTION ============================== -->
+                <!-- A form containing the search bar, filter field and sort field that will be used to filter the job results -->
+
+                <form action="jobs.php" method="GET"> 
+
                     <!-- ============================ SEARCH BAR SECTION ======================== -->
+                    <!-- Conatains the search bar and search button to allow users to search up a specific job -->
+
                     <div class="search">
-                        <input class="search-bar" type="text" name="title" id="title" value="<?php if (isset($_GET['title'])){ echo htmlspecialchars($_GET['title']);}?>" placeholder="Enter Job title here" aria-label='Enter Job title here'>
+                        <input class="search-bar" type="text" name="title" id="title" value="<?php if (isset($_GET['title'])){ echo htmlspecialchars($_GET['title']);}?>" placeholder="Enter Job title here" aria-label='Search bar'>
                         <input class="search-btn" name="search" type="submit" value="Search" aria-label="Submit Search">
                     </div>
 
+                    <!-- The code "</?php //if (isset($_GET['title'])) { echo htmlspecialchars($_GET['title']);}?>"
+                         is used to retain the value submitted after pressing the submit button -->
+
+                    <!-- Allow the user to keep the searched value on search bar and potentially include other fields from 
+                    the filter and sort section should they wish to further filter out the results -->
+
+                    <!-- NOTE: The code was taken from a YouTube video (Reference: https://www.youtube.com/watch?v=Eq7bGWQsOdI)
+                    to retain the values in the in the search bar-->
+
+
                     <!-- ============================ FILTER & SORT BY SECTION ============================ -->
+
+                    <!-- Select elements and input type="radio" have the code below inside the value attribute:
+                        E.g. </?php if(isset($_GET['category']) && $_GET['category'] === "Programming"){echo 'selected' (or 'checked' if input type='radio');}?> 
+                    -->
+                    
+                    <!-- The command was taken from ChatGPT to determine the code for retaining values in a dropdown menu -->
+                    <!-- PROMPT: how to keep value on select element after submitting form using only PHP -->
+                    <!-- Code for the input type="radio" is also based on the code taken from ChatGPT -->
+
 
                     <div class="filter-sort">
                         <!-- ================================ FILTER SECTION ============================ -->
+                        <!-- Contains a lists of fields for filtering job results  -->
+
                         <fieldset>
                             <legend>Filter</legend>
 
                             <!-- ============================ SALARY RANGE FILTER SECTION ============================ -->
+                            <!-- Implement Salary range using two input elements with the type "number": Min. Salary and Max. Salary -->
+                            <!-- Input type="number" is used for preventing users from entering a non-numeric value or special characters-->
 
-                            <!-- Implement Salary range using two input elements: Min. Salary and Max. Salary -->
-                            <!-- Minimum Salary Input element -->
+                            <!-- ===== Minimum Salary Input field ===== -->
                             <div class="min-salary">
                                 <label for="min-salary">Minimum Salary: </label>
-                                <input class="salary" type="number" id="min-salary" name="min-salary" min="0" max="350000" step="10000" value="0">
+                                <input class="salary" type="number" id="min-salary" name="min-salary" min="0" max="350000" step="10000" value="0">              <!-- Range is from 0 to 350K with an increment of 10K -->
                             </div>
 
-                            <!-- Maximum Salary input element -->
+                            <!-- ===== Maximum Salary input element ===== -->
                             <div class="max-salary">
                                 <label for="max-salary">Maximum Salary: </label>
-                                <input class="salary" type="number" id="max-salary" name="max-salary" min="0" max="350000" step="10000" value="350000">   <!-- value attribute is needed as both minimum and maximum salary value is added into the SQL query --> 
+                                <input class="salary" type="number" id="max-salary" name="max-salary" min="0" max="350000" step="10000" value="350000">
                             </div>
 
                             <!-- ============================ CATEGORY FILTER SECTION ============================ -->
@@ -74,8 +112,8 @@
                             <!-- Category Selection using Dropdown Menu -->
                             <div class="category">
                                 <label for="category">Category: </label>
-                                <select name="category" id="category">                  <!-- Submits value under the id "category" -->
-                                    <option value="" <?php if(isset($_GET['category']) && $_GET['category'] === ""){echo 'selected';}?> >Select Option</option>             <!-- Select option value allows for blank values to be submitted -->
+                                <select name="category" id="category">
+                                    <option value="" <?php if(isset($_GET['category']) && $_GET['category'] === ""){echo 'selected';}?> >Select Option</option>             <!-- Blank values allows for users to undo the filter if the user no longer needs it -->
                                     <option value="Programming"     <?php if(isset($_GET['category']) && $_GET['category'] === "Programming"){echo 'selected';}?>>Programming</option>
                                     <option value="Design"          <?php if(isset($_GET['category']) && $_GET['category'] === "Design")     {echo 'selected';}?>>Design</option>
                                     <option value="Development"     <?php if(isset($_GET['category']) && $_GET['category'] === "Development"){echo 'selected';}?> >Development</option>
@@ -87,7 +125,7 @@
                             <!-- Work Type Selection using Dropdown Menu -->
                             <div class="job_type">
                                 <label for="job_type">Work Type: </label>
-                                <select name="job_type" id="job_type">                  <!-- Submits value under the id "job_type" -->
+                                <select name="job_type" id="job_type">
                                     <option value="" <?php if(isset($_GET['job_type']) && $_GET['job_type'] === ""){echo 'selected';}?> >Select Option</option>
                                     <option value="Full-Time" <?php if(isset($_GET['job_type']) && $_GET['job_type'] === "Full-Time"){echo 'selected';} ?>>Full-Time</option>
                                     <option value="Graduate"  <?php if(isset($_GET['job_type']) && $_GET['job_type'] === "Graduate"){echo 'selected';}?>>Graduate</option>
@@ -140,11 +178,14 @@
                         </fieldset>
 
                         <fieldset>
+                            <!-- ================================ SORT BY SECTION ============================ -->
+                            <!-- Users can sort the job listings by either relevance or date  -->
                             <legend>Sort by</legend>
                             <input type="radio" name="sort" id="date" value="date"<?php if(isset($_GET['sort']) && $_GET['sort'] === "date"){echo 'checked';}?>>
                             <label for="date">Date</label>
                             <br>
                             <input type="radio" name="sort" id="relevance" value="relevance" <?php if(isset($_GET['sort']) && $_GET['sort'] === "relevance"){echo 'checked';} if (!isset($_GET['sort'])){echo 'checked';}?>>
+                            <!-- Relevance option is set as default at the beginning of each page -->
                             <label for="relevance">Relevance</label>
                             <br>
                             <input class="sort-btn" type="submit" value="Sort" aria-label="Submit Sort">
@@ -157,10 +198,12 @@
                 <?php
                     // ============================ DATABASE CONNECTION ============================ //
 
+                    // Connect to SQL database
                     require_once "settings.php";
                     $conn = @mysqli_connect($host,$user,$pwd,$sql_db);
                     if ($conn) {
 
+                        // Check if all values after submit are null
                         $title = isset($_GET['title']);
                         $minSalary = isset($_GET['min-salary']);
                         $maxSalary = isset($_GET['max-salary']);
@@ -169,15 +212,21 @@
                         $location = isset($_GET['location']);
                         $remote = isset($_GET['remote']);
                         $listed = isset($_GET['listed']);
-                        $sort = isset($_GET['sortby']);
+                        $sort = isset($_GET['sort']);
 
                         if ($title || $minSalary || $maxSalary || $category || $type || $location || $remote || $listed || $sort) {
-	                        date_default_timezone_set('Australia/Melbourne');
+
+
+                            // Set default timezone to get the correct date
+	                        date_default_timezone_set('Australia/Melbourne');                   // NOTE: Found the function from the following website
+                                                                                                // Link: https://stackoverflow.com/questions/26269364/how-to-setup-timezone-xampp-mysql-and-apache
+                                                                                                // It is the second answer from the user "Putra L Zendatro"
                             
                             // Search bar results
-	                        $valTitle = mysqli_real_escape_string($conn, trim($_GET['title']));
+	                        $valTitle = mysqli_real_escape_string($conn, trim($_GET['title'])); // trim: Remove any whitespaces from the value
+                                                                                                // mysqli_real_escape_string() = escape any special charcters
 
-                            // Filter Results
+                            // Obtain Search, Filter and Sort results
                             $valMinSalary = mysqli_real_escape_string($conn, $_GET['min-salary']);
                             $valMaxSalary =  mysqli_real_escape_string($conn, $_GET['max-salary']);
                             $valCategory = $_GET['category'];
@@ -185,9 +234,13 @@
                             $valLocation = $_GET['location'];
                             $valRemote = $_GET['remote'];
                             $getListed = $_GET['listed'];
+                            $sort = $_GET['sort'];
                             $getToday = date("Y-m-d");
+                                                                                                // gets the current date to
+                                                                                                // NOTE: Found the function from the following website
+                                                                                                // Link: https://www.w3schools.com/php/func_date_date.asp
                             
-
+                            // Determine if the value of Minimum and Maximum Salary are blank
                             if ($valMinSalary === '') {
                                 $minSalary = 0;
                             } else {
@@ -200,11 +253,8 @@
                                 $maxSalary = $valMaxSalary;
                             }
 
-                            // Sort results
-                            $sort = mysqli_real_escape_string($conn, $_GET['sort']);
-
-                            // Create Individual results
-                            $title = "%$valTitle%";
+                            // Prepare the values to be inserted into SQL Query using prepared statements
+                            $title = "%$valTitle%";             //
                             $category = "%$valCategory%";
                             $type = "%$valType%";
                             $location = "%$valLocation%";
@@ -219,12 +269,16 @@
                                 case "3days":
                                     $getDay = date("d");
                                     $lastThree = $getDay - 3;
+                                    // Go back one month to find the job listing date if it is less than the variable
                                     if ($lastThree < 0) {
                                         $lastThree += 30;
                                         $Month = date("m") - 1;
+                                        // if the previous month is january, go back to December last year
                                         if ($Month == 0) {
                                             $Month = 12;
-                                            $date = date("Y"). "-". $Month . "-". $lastThree;
+                                            $getYear = date("Y");
+                                            $Year = $getYear - 1;
+                                            $date = $Year. "-". $Month . "-". $lastThree;
                                             $listed = "$date";
                                         } else {
                                             $concatDate = date("Y"). "-". $Month . "-". $lastThree;
@@ -239,12 +293,15 @@
                                 case "7days":
                                     $getDay = date("d");
                                     $lastSeven = $getDay - 7;
+                                    // Go back one month to find the job listing date if it is less than the variable
                                     if ($lastSeven < 0) {
                                         $lastSeven += 30;
                                         $Month = date("m") - 1;
                                         if ($Month == 0) {
                                             $Month = 12;
-                                            $date = date("Y"). "-". $Month . "-". $lastSeven;
+                                            $getYear = date("Y");
+                                            $Year = $getYear - 1;
+                                            $date = $Year. "-". $Month . "-". $lastSeven;
                                             $listed = "$date";
                                         } else {
                                             $concatDate = date("Y"). "-". $Month . "-". $lastSeven;
@@ -259,12 +316,16 @@
                                 case "14days":
                                     $getDay = date("d");
                                     $lastFourteen = $getDay - 14;
+                                    // Go back one month to find the job listing date if it is less than the variable
                                     if ($lastFourteen < 0) {
                                         $lastFourteen += 30;
                                         $Month = date("m") - 1;
+                                        // if the previous month is january, go back to December last year
                                         if ($Month == 0) {
                                             $Month = 12;
-                                            $date = date("Y"). "-". $Month . "-". $lastFourteen;
+                                            $getYear = date("Y");
+                                            $Year = $getYear - 1;
+                                            $date = $Year. "-". $Month . "-". $lastFourteen;
                                             $listed = "$date";
                                         } else {
                                             $concatDate = date("Y"). "-". $Month . "-". $lastFourteen;
@@ -279,12 +340,16 @@
                                 case "30days":
                                     $getDay = date("d");
                                     $lastThirty = $getDay - 30;
+                                    // Go back one month to find the job listing date if it is less than the variable
                                     if ($lastThirty < 0) {
                                         $lastThirty += 30;
                                         $Month = date("m") - 1;
+                                        // if the previous month is january, go back to December last year
                                         if ($Month == 0) {
                                             $Month = 12;
-                                            $date = date("Y"). "-". $Month . "-". $lastThirty;
+                                            $getYear = date("Y");
+                                            $Year = $getYear - 1;
+                                            $date = $Year. "-". $Month . "-". $lastThirty;
                                             $listed = "$date";
                                         } else {
                                             $concatDate = date("Y"). "-". $Month . "-". $lastThirty;
@@ -297,29 +362,44 @@
                                     $listed = "";
                             }
 
-
+                            // Determine if the results need to sort by date or relevance
                             if ($sort === "date") {
+                                // prepare query with placeholders for prepared statements
                                  $query = "SELECT * FROM jobs WHERE title LIKE ? AND salary BETWEEN ? AND ? AND category LIKE ? AND job_type LIKE ? AND `location` LIKE ?  AND `remote` LIKE ? AND opening_date >= ? AND closing_date >= ? ORDER BY opening_date DESC";
                             } else {
                                  $query = "SELECT * FROM jobs WHERE title LIKE ? AND salary BETWEEN ? AND ? AND category LIKE ? AND job_type LIKE ? AND `location` LIKE ?  AND `remote` LIKE ? AND opening_date >= ? AND closing_date >= ?";
                             }
  
+                            // Execute the SQL query in the database using prepared statements to prevent illegal SQL injections
+
+                            // Prepare SQL Query with
                             $stmt = $conn->prepare($query);
+
+                            // Bind all the variables into the SQL Query
                             $stmt->bind_param("siissssss", $title, $minSalary, $maxSalary, $category, $type, $location, $remote, $listed ,$today);
+
+                            // Execute the safe SQL query to the database
                             $stmt->execute();
 
+                            // Get SQL query results 
                             $result = $stmt->get_result();
+
+                            // 
                             if (mysqli_num_rows($result) > 0) {
+                                // Found matched results
                                 echo"
-                                <div class='results'>
+                                <div class='results'>   
                                     <div class='search-result'>
                                         <p>Search results: ".mysqli_num_rows($result). " job(s).</p>
                                     </div>
                                     <div class='job-container'>";
-                                        include "job-sum.php";
+                                        include "job-sum.php";                  // Attaches the job-sum.php to create a list of job summary to be displayed on the webpage 
+                                                                                // Refer to job-sum.php to see the code.
                                 echo "</div>
                                 </div>";                          
                             } else {
+                                // No matched results
+
                                 echo 
                                 "
                                 <div class='search-result'>
@@ -329,8 +409,9 @@
                                 ";
                             }
                         } else {
+                            // Displays job summary with no filters have been applied; used mostly when the page is opened initially
                             $today = date("Y-m-d");
-                            $query = "SELECT * FROM jobs WHERE closing_date > '$today'";
+                            $query = "SELECT * FROM jobs WHERE closing_date > '$today'"; 
                             $result = mysqli_query($conn, $query);
                             if ($result) {
                                 echo"
@@ -343,6 +424,7 @@
                                 echo "</div>
                                 </div>"; 
                             } else {
+                                // If database is empty
                                 echo 
                                 "
                                 <div class='search-result'>
@@ -352,8 +434,10 @@
                                 ";
                             }
                         }
+                        // Close Database Connection
                         mysqli_close($conn);
                     } else {
+                        // Error in Database connection
                         echo "<p> Unable to connect to database.</p>";
                     }
                 ?>
@@ -362,6 +446,6 @@
         </main>
         <!-- ============================ FOOTER SECTION ============================ -->
 
-        <?php include 'footer.inc'; ?>        
+        <?php include 'footer.inc'; ?>   <!-- Attach footer.inc to the bottom of the page for layout consistancy -->   
     </body>
 </html>
