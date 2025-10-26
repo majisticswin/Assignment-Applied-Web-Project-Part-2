@@ -102,17 +102,19 @@
                             <!-- ============================ SALARY RANGE FILTER SECTION ============================ -->
                             <!-- Implement Salary range using two input elements with the type "number": Min. Salary and Max. Salary -->
                             <!-- Input type="number" is used for preventing users from entering a non-numeric value or special characters-->
+                            <!-- Note: The code in the value attribute is based on the YouTube link above -->
+                            <!-- Reference: https://www.youtube.com/watch?v=Eq7bGWQsOdI -->
 
                             <!-- ===== Minimum Salary Input field ===== -->
                             <div class="min-salary">
                                 <label for="min-salary">Minimum Salary: </label>
-                                <input class="salary" type="number" id="min-salary" name="min-salary" min="0" max="350000" step="10000" value="0">              <!-- Range is from 0 to 350K with an increment of 10K -->
+                                <input class="salary" type="number" id="min-salary" name="min-salary" min="0" max="350000" step="10000" value="<?php if(isset($_GET['min-salary'])) {echo $_GET['min-salary'];}?>">              <!-- Range is from 0 to 350K with an increment of 10K -->
                             </div>
 
                             <!-- ===== Maximum Salary input element ===== -->
                             <div class="max-salary">
                                 <label for="max-salary">Maximum Salary: </label>
-                                <input class="salary" type="number" id="max-salary" name="max-salary" min="0" max="350000" step="10000" value="350000">
+                                <input class="salary" type="number" id="max-salary" name="max-salary" min="0" max="350000" step="10000" value="<?php if(isset($_GET['max-salary'])) {echo $_GET['max-salary'];}?>">
                             </div>
 
                             <!-- ============================ CATEGORY FILTER SECTION ============================ -->
