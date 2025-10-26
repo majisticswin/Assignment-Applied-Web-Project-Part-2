@@ -3,8 +3,8 @@
     Filename: jobs_style.css
     Author: Disha Anchan
     Created: 25/10/2025
-    Last Modified: 25/10/2025
-    Description: CSS stylesheet for jobs-desc.php
+    Last Modified: 27/10/2025
+    Description: CSS stylesheet for job-desc.php
 */
 /* ============================================================================== */
 
@@ -48,7 +48,7 @@ body {
   width: min(1100px, 92%);
   margin: 0 auto;
 }
-
+/* For the copyright */
 .small { font-size: 0.9rem; color: var(--muted); }
 
 /*  ======================  Header Styling  ====================== */
@@ -80,8 +80,10 @@ body {
 /* 'current' indicates the active route; use a strong outline for visibility */
 .site-nav a.current { outline: 2px solid var(--accent); }
 
-/*  ======================  Main Content Styling  ====================== */
+
 /* ====================== Hero Styling ====================== */
+
+/* Main container for the hero image */
 .hero {
     border-bottom: var(--border) 1px solid;
     display: inline-flex;
@@ -91,6 +93,7 @@ body {
     background-color: #1c2c40;
 }
 
+/* inner container for the hero image */
 .hero-content {
     display: inline-flex;
     justify-content: space-evenly;
@@ -101,6 +104,7 @@ body {
     margin: 0rem;
 }
 
+/* Styling the careers.jpg for the hero image */
 .hero img {
     flex-grow: 1;
     width: 60%;
@@ -108,6 +112,7 @@ body {
     border-left: var(--border) 2px solid;
 }
 
+/* Container for the "Why join Us" section */
 aside {
     width: 25%;
     float: right;
@@ -118,30 +123,33 @@ aside {
     padding: 0.5rem;
 }
 
-/* ----- "Why join Us" Aside Reasons Styling ----- */
+/* Stylising the list element for the "Why join Us" section */
 .hero li {
-
     margin: 0.3em 0em;
     padding: 0em;
 }
 
+/* Stylising the content for the "Why join Us" section */
 .hero h1 {
     margin: 0.5em;
     width: 80%;
 }
 
-.hero p {
-    margin: 0.5em 1em;
-}
-/*  ===========  Job Summary Section Styling  =========== */
+/*  ======================  Main Content Styling  ====================== */
 
 /*  ===========  Job Description Section Styling  =========== */
 
+/* Stylising the container for the job description */
 .job-position {
     width: 100%;
     margin: 1em 0em 0em;
     padding: 0em 1em;
 
+}
+
+/* General positioning for paragraphs*/
+.job-position p {
+    margin: 0em 2em;
 }
 
 /* ----- Job Description Main Heading ----- */
@@ -163,17 +171,23 @@ aside {
 
 /*  ===========  "Job Details" Section Styling  =========== */
 
-/* Styling for Reference Number, Salary and Reporting Line Heading */
+/* Styling for Reference Number, Salary, Reporting Line, Date posted, Location, Employment Type*/
 .job-details strong {
     color:  #e7edf5;
     margin: 0em 0.5em 0em 1em;
     
 }
 
+/*  ===========  "Job Description" Section  Styling  =========== */
 
+/* Reposition the paragraph */
+.job-desc p {
+    margin: 0em 2em;
+}
 
 /*  ===========  "Key Responsibilities" Section  Styling  =========== */
 
+/* positioning the ordered and unordered lists to add structure */
 .key-resp ol, .pref-req ul, .essen-req ul {
     margin: 0em 3em;
     padding: 0em 2em;
@@ -181,21 +195,14 @@ aside {
 
 /*  ===========  "Job Requirements" Section Styling  =========== */
 
+/* Stylising the subheadings: Essential and Preferrable requirements */
 .job-req h4 {
     color:  #e7edf5;
     font-size: 18px;
     margin: 1em 1em 0.5em 2em;
 }
 
-.job-position p {
-    margin: 0em 2em;
-}
-
-.job-desc p {
-    margin: 0em 2em;
-}
-
-
+/* ===========  "Closing date" Styling  =========== */
 .close-date p {
     margin: 1em;
     font-size: 18px;
@@ -203,12 +210,19 @@ aside {
 
 /*  ===========  "Apply Now" and "Return to Jobs Page" Button Styling  =========== */
 
+/* Positioning the "Apply now" button */
 .apply-btn {
     display: inline-block;
     margin: 2em 1em 1em;
 
 }
+/* Positioning the "Return to Jobs Page" button */
+.return-btn {
+    display: inline-block;
+    margin: 2em 0em 2em;
+}
 
+/* Stylising the "Apply now" and "Return to Jobs Page" Button */
 .apply-btn a, .return-btn a {
     border-radius: 0.7em;
     background: linear-gradient(90deg, #00e5ff, #7c4dff);
@@ -222,22 +236,19 @@ aside {
 
 }
 
+/* Readjust the padding for the "Return to Jobs Page" button */
 .return-btn a {
     padding: 0.9em;
 }
 
-.return-btn {
-    display: inline-block;
-    margin: 2em 0em 2em;
-}
 
-.btn a:hover, .return-btn a:hover {
-    background: linear-gradient(90deg, #a4f3fd, #c8b5fc);
-    color: #233142;
+/* Stylising the button when hovered on or selected on keyboard */
+.apply-btn a:hover, .return-btn a:hover, .apply-btn a:focus-visible, .return-btn a:focus-visible {
+    filter: brightness(1.1);
 }
 
 
-/* Footer */
+/*  ===========  Footer Styling  =========== */
 .site-footer {
   border-top: 1px solid var(--border);
   background: #0b1220;
