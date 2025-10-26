@@ -52,7 +52,7 @@
                     <!-- ============================ SEARCH BAR SECTION ======================== -->
                     <div class="search">
                         <input class="search-bar" type="text" name="title" id="title" value="<?php if (isset($_GET['title'])){ echo htmlspecialchars($_GET['title']);}?>" placeholder="Enter Job title here" aria-label='Enter Job title here'>
-                        <input class="search-btn" name="search"type="submit" value="Search" aria-label="Submit Search">
+                        <input class="search-btn" name="search" type="submit" value="Search" aria-label="Submit Search">
                     </div>
 
                     <!-- ============================ FILTER & SORT BY SECTION ============================ -->
@@ -180,7 +180,9 @@
                         $sort = isset($_GET['sortby']);
 
                         if ($title || $minSalary || $maxSalary || $category || $type || $location || $remote || $listed || $sort) {
-	                        // Search bar results
+	                        date_default_timezone_set('Australia/Melbourne');
+                            
+                            // Search bar results
 	                        $valTitle = mysqli_real_escape_string($conn, trim($_GET['title']));
 
                             // Filter Results
@@ -192,6 +194,7 @@
                             $valRemote = $_GET['remote'];
                             $getListed = $_GET['listed'];
                             $getToday = date("Y-m-d");
+                            
 
                             if ($valMinSalary === '') {
                                 $minSalary = 0;
@@ -301,7 +304,6 @@
                                 default:
                                     $listed = "";
                             }
-
 
 
                             if ($sort === "date") {
