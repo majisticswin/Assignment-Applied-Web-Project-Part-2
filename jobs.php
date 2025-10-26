@@ -212,65 +212,53 @@
                     if ($conn) {
 
                         // Check if all values after submit are null
-                        $title = isset($_GET['title']);                 // Job Title
-                        $minSalary = isset($_GET['min-salary']);        // Minimum Salary
-                        $maxSalary = isset($_GET['max-salary']);        // Maximum Salary
-                        $category = isset($_GET['category']);           // Category = e.g. Development, Programming etc.
-                        $type = isset($_GET['job_type']);               // Employment Type = e.g. Full-Time
-                        $location = isset($_GET['location']);           // Location
-                        $remote = isset($_GET['remote']);               // Remote options = e.g. Remote, Hybrid etc.
-                        $listed = isset($_GET['listed']);               // Date job was posted on
-                        $sort = isset($_GET['sort']);                   // Sort value = e.g. by date or relevance
+                        $gettitle = isset($_GET['title']);                 // Job Title
+                        $getMinSalary = isset($_GET['min-salary']);        // Minimum Salary
+                        $getMaxSalary = isset($_GET['max-salary']);        // Maximum Salary
+                        $getCategory = isset($_GET['category']);           // Category = e.g. Development, Programming etc.
+                        $getType = isset($_GET['job_type']);               // Employment Type = e.g. Full-Time
+                        $getLocation = isset($_GET['location']);           // Location
+                        $getRemote = isset($_GET['remote']);               // Remote options = e.g. Remote, Hybrid etc.
+                        $getListed = isset($_GET['listed']);               // Date job was posted on
+                        $getSort = isset($_GET['sort']);                   // Sort value = e.g. by date or relevance
 
-                        if ($title || $minSalary || $maxSalary || $category || $type || $location || $remote || $listed || $sort) {
+                        if ($gettitle || $getMinSalary || $getMaxSalary || $getCategory || $getType || $getLocation || $getRemote || $getListed || $getSort) {
 
 
                             // Set default timezone to get the correct date
 	                        date_default_timezone_set('Australia/Melbourne');                   // NOTE: Found the function from the following website
                                                                                                 // Link: https://stackoverflow.com/questions/26269364/how-to-setup-timezone-xampp-mysql-and-apache
                                                                                                 // It is the second answer from the user "Putra L Zendatro"
-                            
+
+
                             // Search bar results
-	                        $valTitle = mysqli_real_escape_string($conn, trim($_GET['title'])); // trim: Remove any whitespaces from the value
+	                        $title = mysqli_real_escape_string($conn, trim($_GET['title']));    // trim: Remove any whitespaces from the value
                                                                                                 // mysqli_real_escape_string() = escape any special charcters
 
                             // Obtain Search, Filter and Sort results
-                            $valMinSalary = mysqli_real_escape_string($conn, $_GET['min-salary']);
-                            $valMaxSalary =  mysqli_real_escape_string($conn, $_GET['max-salary']);
-                            $valCategory = $_GET['category'];
-                            $valType = $_GET['job_type'];
-                            $valLocation = $_GET['location'];
-                            $valRemote = $_GET['remote'];
-                            $getListed = $_GET['listed'];
+                            $minSalary =  $_GET['min-salary'];
+                            $maxSalary =  $_GET['max-salary'];
+                            $category = $_GET['category'];
+                            $type = $_GET['job_type'];
+                            $location = $_GET['location'];
+                            $remote = $_GET['remote'];
+                            $listed = $_GET['listed'];
                             $sort = $_GET['sort'];
-                            $getToday = date("Y-m-d");
+                            $today = date("Y-m-d");
                                                                                                 // gets the current date
                                                                                                 // NOTE: Found the function from the following website
                                                                                                 // Link: https://www.w3schools.com/php/func_date_date.asp
                             
                             // Determine if the value of Minimum and Maximum Salary are blank
-                            if ($valMinSalary === '') {
+                            if ($minSalary === '') {
                                 $minSalary = 0;
-                            } else {
-                                $minSalary = $valMinSalary;
                             }
-                            
-                            if ($valMaxSalary === '') {
+                            if ($maxSalary === '') {
                                 $maxSalary = 350000;
-                            } else {
-                                $maxSalary = $valMaxSalary;
                             }
-
-                            // Prepare the values to be inserted into SQL Query using prepared statements
-                            $title = "%$valTitle%";             
-                            $category = "%$valCategory%";
-                            $type = "%$valType%";
-                            $location = "%$valLocation%";
-                            $remote = "%$valRemote%";
-                            $today = "$getToday";
 
                             // Calculate job listing date for values "today", "3days", "7days", "14days", "30days" 
-                            switch ($getListed) {
+                            switch ($listed) {
                                 case "today":
                                     $listed = date("Y-m-d");
                                     break;
@@ -373,26 +361,13 @@
                             // Determine if the results need to sort by date or relevance
                             if ($sort === "date") {
                                 // prepare query with placeholders for prepared statements
-                                 $query = "SELECT * FROM jobs WHERE title LIKE ? AND salary BETWEEN ? AND ? AND category LIKE ? AND job_type LIKE ? AND `location` LIKE ?  AND `remote` LIKE ? AND opening_date >= ? AND closing_date >= ? ORDER BY opening_date DESC";
+                                 $query = "SELECT * FROM jobs WHERE title LIKE '%$title%' AND salary BETWEEN $minSalary AND $maxSalary AND category LIKE '%$category%' AND job_type LIKE '%$type%' AND `location` LIKE '%$location%'  AND `remote` LIKE '%$remote%' AND opening_date >= '$listed' AND closing_date >= '$today' ORDER BY opening_date DESC";
                             } else {
-                                 $query = "SELECT * FROM jobs WHERE title LIKE ? AND salary BETWEEN ? AND ? AND category LIKE ? AND job_type LIKE ? AND `location` LIKE ?  AND `remote` LIKE ? AND opening_date >= ? AND closing_date >= ?";
+                                 $query = "SELECT * FROM jobs WHERE title LIKE '%$title%' AND salary BETWEEN $minSalary AND $maxSalary AND category LIKE '%$category%' AND job_type LIKE '%$type%' AND `location` LIKE '%$location%'  AND `remote` LIKE '%$remote%' AND opening_date >= '$listed' AND closing_date >= '$today'";
                             }
- 
-                            // Execute the SQL query in the database using prepared statements to prevent illegal SQL injections
 
-                            // Prepare SQL Query with
-                            $stmt = $conn->prepare($query);
-
-                            // Bind all the variables into the SQL Query
-                            $stmt->bind_param("siissssss", $title, $minSalary, $maxSalary, $category, $type, $location, $remote, $listed ,$today);
-
-                            // Execute the safe SQL query to the database
-                            $stmt->execute();
-
-                            // Get SQL query results 
-                            $result = $stmt->get_result();
-
-                            // 
+                            // Execute SQL query
+                            $result = mysqli_query($conn, $query);
                             if (mysqli_num_rows($result) > 0) {
                                 // Found matched results
                                 echo"
