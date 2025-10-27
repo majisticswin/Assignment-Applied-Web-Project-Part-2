@@ -2,6 +2,38 @@
 // about.php - About Our Team Page
 // Purpose: Display group details, team photo, contributions, and fun facts
 $pageTitle = "About Our Team — Panda Mice";
+
+// ---------- Simple DB setup (beginner friendly) ----------
+/*
+  Update the credentials below to match your environment.
+  - $db_host: typically 'localhost'
+  - $db_user: your DB username (e.g. 'root')
+  - $db_pass: your DB password (often empty on dev machines)
+  - $db_name: the database created by sb.sql (project2_db)
+  Reference: https://www.php.net/manual/en/book.mysqli.php
+*/
+$db_host = 'localhost';
+$db_user = 'root';
+$db_pass = ''; // <-- change if your MySQL has a password
+$db_name = 'project2_db';
+
+$mysqli = new mysqli($db_host, $db_user, $db_pass, $db_name);
+if ($mysqli->connect_errno) {
+  // Keep this message simple for beginners; use error_log in production
+  die("Database connection failed: " . $mysqli->connect_error);
+}
+
+// Fetch members from `about` table
+$members = [];
+if ($result = $mysqli->query("SELECT * FROM about ORDER BY member_id")) {
+  while ($row = $result->fetch_assoc()) {
+    $members[] = $row;
+  }
+  $result->free();
+} else {
+  // If query fails, we log but allow the page to continue with an empty list
+  error_log("DB query failed (about): " . $mysqli->error);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en-AU">
@@ -53,39 +85,38 @@ $pageTitle = "About Our Team — Panda Mice";
     <!-- Member contributions with accordion for interactivity -->
     <section aria-labelledby="contrib">
       <h2 id="contrib">Member contributions and quotes</h2>
+
+      <!-- Render members dynamically from the DB -->
+       <!-- Reference https://www.php.net/mysqli -->
       <dl class="member-list">
+<?php foreach ($members as $m):
+      // unique id for JS accordion
+      $id = 'member' . (int)$m['member_id'];
+?>
         <div class="member">
-          <dt onclick="toggleAccordion('mitul')">Mitul Joarder <span class="student-id">205980686</span></dt>
-          <dd id="mitul" class="accordion">
-            <p><strong>Contribution:</strong> about.php & CSS</p>
-            <p><strong>Quote:</strong> “The more you stay quiet, the more you listen” — <span lang="bn">তুমি যত চুপ থাকবে, তত বেশি শুনবে</span></p>
-            <p><strong>Favourite language:</strong> Python & PHP</p>
+          <dt onclick="toggleAccordion('<?php echo $id; ?>')">
+            <?php echo htmlspecialchars($m['name']); ?>
+            <?php if (!empty($m['student_id'])): ?>
+              <span class="student-id"><?php echo htmlspecialchars($m['student_id']); ?></span>
+            <?php endif; ?>
+          </dt>
+
+          <dd id="<?php echo $id; ?>" class="accordion">
+            <p><strong>Contribution:</strong>
+              <?php
+                // combine contribution parts if available, keep newlines readable
+                $parts = trim($m['contribution_part1']);
+                if (!empty($m['contribution_part2'])) {
+                  $parts .= ' & ' . trim($m['contribution_part2']);
+                }
+                echo nl2br(htmlspecialchars($parts));
+              ?>
+            </p>
+            <p><strong>Quote:</strong> <?php echo htmlspecialchars($m['quote']); ?></p>
+            <p><strong>Favourite language:</strong> <?php echo htmlspecialchars($m['favourite_language']); ?></p>
           </dd>
         </div>
-        <div class="member">
-          <dt onclick="toggleAccordion('disha')">Disha Anchan <span class="student-id">103031430</span></dt>
-          <dd id="disha" class="accordion">
-            <p><strong>Contribution:</strong> jobs.php & styles.css</p>
-            <p><strong>Quote:</strong> “Design is how it works.” — <span lang="ja">デザインとは、それがどのように機能するかということです。</span></p>
-            <p><strong>Favourite language:</strong> Java & Python</p>
-          </dd>
-        </div>
-        <div class="member">
-          <dt onclick="toggleAccordion('van')">Can Van Sang <span class="student-id">105325766</span></dt>
-          <dd id="van" class="accordion">
-            <p><strong>Contribution:</strong> apply.php & CSS</p>
-            <p><strong>Quote:</strong> “Smooth is fast.” — <span lang="vi">Mượt mà tức là nhanh.</span></p>
-            <p><strong>Favourite language:</strong> Python</p>
-          </dd>
-        </div>
-        <div class="member">
-          <dt onclick="toggleAccordion('samuel')">Samuel Moore-Coulson <span class="student-id">106188960</span></dt>
-          <dd id="samuel" class="accordion">
-            <p><strong>Contribution:</strong> Content, job descriptions</p>
-            <p><strong>Quote:</strong> “Yesterday is history, Tomorrow is mystery and Today is a gift” — <span lang="es">Ayer es historia, mañana es misterio y hoy es un regalo.</span></p>
-            <p><strong>Favourite language:</strong> HTML</p>
-          </dd>
-        </div>
+<?php endforeach; ?>
       </dl>
     </section>
 
@@ -103,34 +134,24 @@ $pageTitle = "About Our Team — Panda Mice";
           </tr>
         </thead>
         <tbody>
+<?php foreach ($members as $m): ?>
           <tr>
-            <td>Mitul</td>
-            <td>CIA</td>
-            <td>Monster ED</td>
-            <td>Dhaka</td>
+            <!-- Show first name (simple split) -->
+            <td><?php echo htmlspecialchars(explode(' ', trim($m['name']))[0]); ?></td>
+            <td><?php echo htmlspecialchars($m['dream_job']); ?></td>
+            <td><?php echo htmlspecialchars($m['coding_snack']); ?></td>
+            <td><?php echo htmlspecialchars($m['hometown']); ?></td>
           </tr>
-          <tr>
-            <td>Disha</td>
-            <td>Artist</td>
-            <td>Popcorn & Pepsi Max</td>
-            <td>Melbourne</td>
-          </tr>
-          <tr>
-            <td>Van</td>
-            <td>Police</td>
-            <td>Burritos & Diet Coke</td>
-            <td>Vietnam</td>
-          </tr>
-          <tr>
-            <td>Samuel</td>
-            <td>CEO</td>
-            <td>Coffee</td>
-            <td>Australia</td>
-          </tr>
+<?php endforeach; ?>
         </tbody>
       </table>
     </section>
   </main>
+
+<?php
+// close DB connection
+$mysqli->close();
+?>
 
   <!-- ================= FOOTER ================= -->
   <?php include("footer.inc"); ?>
