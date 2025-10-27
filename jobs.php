@@ -432,7 +432,7 @@
                             $today = date("Y-m-d");
                             $query = "SELECT * FROM jobs WHERE closing_date >= '$today'"; 
                             $result = mysqli_query($conn, $query);
-                            if ($result) {
+                            if (mysqli_num_rows($result) > 0) {
                                 echo"
                                 <div class='results'>
                                     <div class='search-result'>
