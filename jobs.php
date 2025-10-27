@@ -269,14 +269,23 @@
                                     $lastThree = $getDay - 3;
                                     // Go back one month to find the job listing date if it is less than the variable
                                     if ($lastThree < 0) {
-                                        $lastThree += 30;
+                                        $getMonth = date("m");
+                                        if ($getMonth === "Sep" || $getMonth === "Apr" || $getMonth === "Jun" || $getMonth === "Nov") {
+                                            $monValue = 30;
+                                        } elseif ($getMonth === "Feb") {
+                                            $monValue = 28;
+                                        } else {
+                                            $monValue = 31;
+                                        }
+                                        $lastThree += $monValue;
                                         $Month = date("m") - 1;
                                         // if the previous month is january, go back to December last year
                                         if ($Month == 0) {
                                             $Month = 12;
                                             $getYear = date("Y");
                                             $Year = $getYear - 1;
-                                            $date = $Year. "-". $Month . "-". $lastThree;
+                                            $concatDate = $Year. "-". $Month . "-". $lastThirty;
+                                            $date = date("Y-m-d", strtotime($concatDate));
                                             $listed = "$date";
                                         } else {
                                             $concatDate = date("Y"). "-". $Month . "-". $lastThree;
@@ -293,13 +302,22 @@
                                     $lastSeven = $getDay - 7;
                                     // Go back one month to find the job listing date if it is less than the variable
                                     if ($lastSeven < 0) {
-                                        $lastSeven += 30;
+                                        $getMonth = date("m");
+                                        if ($getMonth === "Sep" || $getMonth === "Apr" || $getMonth === "Jun" || $getMonth === "Nov") {
+                                            $monValue = 30;
+                                        } elseif ($getMonth === "Feb") {
+                                            $monValue = 28;
+                                        } else {
+                                            $monValue = 31;
+                                        }
+                                        $lastSeven += $monValue;
                                         $Month = date("m") - 1;
                                         if ($Month == 0) {
                                             $Month = 12;
                                             $getYear = date("Y");
                                             $Year = $getYear - 1;
-                                            $date = $Year. "-". $Month . "-". $lastSeven;
+                                            $concatDate = $Year. "-". $Month . "-". $lastThirty;
+                                            $date = date("Y-m-d", strtotime($concatDate));
                                             $listed = "$date";
                                         } else {
                                             $concatDate = date("Y"). "-". $Month . "-". $lastSeven;
@@ -316,21 +334,29 @@
                                     $lastFourteen = $getDay - 14;
                                     // Go back one month to find the job listing date if it is less than the variable
                                     if ($lastFourteen < 0) {
-                                        $lastFourteen += 30;
+                                        $getMonth = date("m");
+                                        if ($getMonth === "Sep" || $getMonth === "Apr" || $getMonth === "Jun" || $getMonth === "Nov") {
+                                            $monValue = 30;
+                                        } elseif ($getMonth === "Feb") {
+                                            $monValue = 28;
+                                        } else {
+                                            $monValue = 31;
+                                        }
+                                        $lastFourteen += $monValue;
                                         $Month = date("m") - 1;
-                                        // if the previous month is january, go back to December last year
                                         if ($Month == 0) {
                                             $Month = 12;
                                             $getYear = date("Y");
                                             $Year = $getYear - 1;
-                                            $date = $Year. "-". $Month . "-". $lastFourteen;
+                                            $concatDate = $Year. "-". $Month . "-". $lastThirty;
+                                            $date = date("Y-m-d", strtotime($concatDate));
                                             $listed = "$date";
                                         } else {
                                             $concatDate = date("Y"). "-". $Month . "-". $lastFourteen;
                                             $date = date("Y-m-d", strtotime($concatDate));
                                             $listed = "$date";
                                         }
-                                    } else {
+                                    }  else {
                                         $date = date("Y-m")."-".$lastFourteen;
                                         $listed = "$date";
                                     }
@@ -340,14 +366,23 @@
                                     $lastThirty = $getDay - 30;
                                     // Go back one month to find the job listing date if it is less than the variable
                                     if ($lastThirty < 0) {
-                                        $lastThirty += 30;
+                                        $getMonth = date("m");
+                                        if ($getMonth === "Sep" || $getMonth === "Apr" || $getMonth === "Jun" || $getMonth === "Nov") {
+                                            $monValue = 30;
+                                        } elseif ($getMonth === "Feb") {
+                                            $monValue = 28;
+                                        } else {
+                                            $monValue = 31;
+                                        }
+                                        $lastThirty += $monValue;
                                         $Month = date("m") - 1;
                                         // if the previous month is january, go back to December last year
                                         if ($Month == 0) {
                                             $Month = 12;
                                             $getYear = date("Y");
                                             $Year = $getYear - 1;
-                                            $date = $Year. "-". $Month . "-". $lastThirty;
+                                            $concatDate = $Year. "-". $Month . "-". $lastThirty;
+                                            $date = date("Y-m-d", strtotime($concatDate));
                                             $listed = "$date";
                                         } else {
                                             $concatDate = date("Y"). "-". $Month . "-". $lastThirty;
