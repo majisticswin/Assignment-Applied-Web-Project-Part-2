@@ -55,7 +55,7 @@ $pageTitle = "Panda Mice Careers - Join Our Team";
       
       <figure class="studio-figure">
         <!-- dev image -->
-        <img src="/images/developers.png" alt="Team collaborating on projects at Panda Mice" width="960" height="540">
+        <img src="images/developers.png" alt="Team collaborating on projects at Panda Mice" width="960" height="540">
         <figcaption>Our team working together to create world-class experiences.</figcaption>
       </figure>
 
@@ -77,16 +77,6 @@ $pageTitle = "Panda Mice Careers - Join Our Team";
   </main>
 
   <!-- ================= FOOTER ================= -->
-  <footer class="site-footer" role="contentinfo">
-    <div class="container footer-inner">
-      <p><strong>Contact:</strong> <a href="mailto:info@pandamicegames.com">info@pandamicegames.com</a></p>
-      <ul class="footer-links">
-        <li><a href="https://pandamice.atlassian.net/" rel="noopener">Jira</a></li>
-        <li><a href="https://github.com/majisticswin/PandaMice" rel="noopener">GitHub</a></li>
-      </ul>
-      <p class="small">© Panda Mice. Melbourne, Australia.</p>
-    </div>
-  </footer>
 </body>
 <?php include("footer.inc"); ?>
 
