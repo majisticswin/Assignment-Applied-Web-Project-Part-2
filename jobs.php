@@ -430,7 +430,7 @@
                         } else {
                             // Displays job summary with no filters have been applied; used mostly when the page is opened initially
                             $today = date("Y-m-d");
-                            $query = "SELECT * FROM jobs WHERE closing_date > '$today'"; 
+                            $query = "SELECT * FROM jobs WHERE closing_date >= '$today'"; 
                             $result = mysqli_query($conn, $query);
                             if ($result) {
                                 echo"
