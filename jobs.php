@@ -108,13 +108,13 @@
                             <!-- ===== Minimum Salary Input field ===== -->
                             <div class="min-salary">
                                 <label for="min-salary">Minimum Salary: </label>
-                                <input class="salary" type="number" id="min-salary" name="min-salary" min="0" max="350000" step="10000" value="<?php if(isset($_GET['min-salary'])) {echo $_GET['min-salary'];}?>">              <!-- Range is from 0 to 350K with an increment of 10K -->
+                                <input class="salary" type="number" id="min-salary" name="min-salary" min="0" max="350000" step="10000" value="<?php if(isset($_GET['min-salary'])) {echo $_GET['min-salary'];} else {echo "0";}?>">              <!-- Range is from 0 to 350K with an increment of 10K -->
                             </div>
 
                             <!-- ===== Maximum Salary input element ===== -->
                             <div class="max-salary">
                                 <label for="max-salary">Maximum Salary: </label>
-                                <input class="salary" type="number" id="max-salary" name="max-salary" min="0" max="350000" step="10000" value="<?php if(isset($_GET['max-salary'])) {echo $_GET['max-salary'];}?>">
+                                <input class="salary" type="number" id="max-salary" name="max-salary" min="0" max="350000" step="10000" value="<?php if(isset($_GET['max-salary'])) {echo $_GET['max-salary'];} else {echo "350000";}?>">
                             </div>
 
                             <!-- ============================ CATEGORY FILTER SECTION ============================ -->
