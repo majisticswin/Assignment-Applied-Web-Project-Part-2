@@ -1,6 +1,6 @@
 # Project Name
 
-Applied Web Peoject (PART 2)
+Applied Web Project (PART 2)
 
 ## Overview
 
