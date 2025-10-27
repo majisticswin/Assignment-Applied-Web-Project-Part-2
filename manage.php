@@ -129,8 +129,8 @@ if ($action === 'list_all') {
     <meta charset="UTF-8" />
     <meta name="keywords" content="HJDJ IT, IT jobs, software jobs, tech careers, job application, software engineering, developer jobs, IT careers, job openings, apply online">
     <title>HJDJ IT Manager Portal</title>
-    <link rel="stylesheet" href="styles/styles.css?v2">
-    <link rel="icon" type="image/png" href="images/logoweb.png">
+    <link rel="stylesheet" href="styles/manage_styles.css">
+    <link rel="icon" type="image/png" href="images/Panda Mice-logo.png">
     <style>
       select[name^="status"] {
         width: 100px;
@@ -155,9 +155,16 @@ if ($action === 'list_all') {
         <li><a href="logout.php">Logout</a></li>
       </ul>
     </nav>
-    <?php if (!empty($success_msg)): ?>
-  <div class='success-message'><?php echo htmlspecialchars($success_msg, ENT_QUOTES, 'UTF-8'); ?></div>
-<?php endif; ?>
+
+    <!-- OPEN main container so CSS from other pages (apply/login) applies -->
+    <main class="site-main container">
+
+    <!-- Show success message (variable used by script is $success) -->
+    <?php if (!empty($success)): ?>
+      <div class="alert alert-success" role="status">
+        <?php echo htmlspecialchars($success, ENT_QUOTES, 'UTF-8'); ?>
+      </div>
+    <?php endif; ?>
 
     <!-- Error Message -->
     <?php if (!empty($error)): ?>
@@ -167,7 +174,7 @@ if ($action === 'list_all') {
     <?php endif; ?>
 
     <!-- ================= MANAGEMENT FORMS ================= -->
-    <section class="management-section">
+    <section class="management-panel">
       <h2>Search & Filter Options</h2>
 
       <!-- List All EOIs -->
@@ -186,10 +193,11 @@ if ($action === 'list_all') {
           <label for="job_ref">Job Reference:</label>
           <select id="job_ref" name="job_ref" required>
             <option value="">-- Select Job Reference --</option>
-            <option value="AP103">AP103 - AI Programmer</option>
-            <option value="GD401">GD401 - Game Developer</option>
-            <option value="NP192">NP192 - Network Programmer</option>
-            <option value="TA801">TA801 - Technical Artist</option>
+            <!-- FIXED: option values now match the DB job_ref values -->
+            <option value="A1034">A1034 - AI Programmer</option>
+            <option value="G4012">G4012 - Game Developer</option>
+            <option value="N1920">N1920 - Network Programmer</option>
+            <option value="T8014">T8014 - Technical Artist</option>
           </select>
           <input type="hidden" name="action" value="list_by_position">
           <button type="submit" class="btn">Filter</button>
@@ -229,14 +237,14 @@ if ($action === 'list_all') {
 
     <!-- ================= RESULTS TABLE ================= -->
     <?php if ($result && $result instanceof mysqli_result && $result->num_rows > 0): ?>
-      <section class="results-section">
+      <section class="results-panel">
         <h2>Results 
           <?php if ($action === 'list_by_position'): ?>
             (Job: <?php echo htmlspecialchars($_GET['job_ref'], ENT_QUOTES, 'UTF-8'); ?>)
           <?php endif; ?>
         </h2>
 
-        <div class="table-container">
+        <div class="table-container results-panel">
           <form method="post" id="statusForm">
             <table class="eoi-table" role="region" aria-label="EOI Management Table">
               <thead>
@@ -283,12 +291,13 @@ if ($action === 'list_all') {
         </div>
       </section>
     <?php elseif ($result && $result instanceof mysqli_result): ?>
-      <section class="results-section">
+      <section class="results-panel">
         <p>No EOIs found matching your criteria.</p>
       </section>
     <?php endif; ?>
 
-  </main>
+    <!-- close main container -->
+    </main>
 
   <!-- ================= FOOTER ================= -->
   <?php include("footer.inc"); ?>
