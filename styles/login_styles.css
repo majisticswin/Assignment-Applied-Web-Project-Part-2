@@ -1,0 +1,140 @@
+/* Simple, focused CSS for login.php
+   - Inspired by existing site styles (colors, spacing)
+   - Keeps rules small so beginners can read and modify easily
+*/
+
+:root {
+  --bg: #0a0f1a;
+  --panel: #0f1626;
+  --muted: #a8b3c7;
+  --text: #e7edf5;
+  --accent: #00e5ff;
+  --accent-2: #7c4dff;
+  --border: #233142;
+  --btn-text-dark: #001018;
+}
+
+* { box-sizing: border-box; }
+html { color-scheme: dark; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+/* Page container */
+.container {
+  width: min(720px, 92%);
+  margin: 2.25rem auto;
+}
+
+/* Main card for the form */
+.site-main {
+  background: linear-gradient(180deg, rgba(15,22,38,0.9), rgba(15,22,38,0.98));
+  border: 1px solid var(--border);
+  padding: 1.25rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.6);
+}
+
+/* Heading / helper text */
+h1 { margin-top: 0; font-size: 1.5rem; }
+.small { color: var(--muted); font-size: 0.95rem; }
+
+/* Login form layout */
+.login-form {
+  display: grid;
+  gap: 0.9rem;
+  margin-top: 1rem;
+  align-items: start;
+}
+
+/* Field group */
+.form-field { display: flex; flex-direction: column; gap: 0.35rem; }
+.form-field label { font-weight: 600; font-size: 0.95rem; }
+.form-field input {
+  background: #0b1220;
+  color: var(--text);
+  border: 1px solid #1c2740;
+  padding: 0.6rem 0.7rem;
+  border-radius: 0.35rem;
+  font-size: 0.98rem;
+}
+.form-field input::placeholder { color: #5f6b7d; }
+
+/* Focus state for accessibility */
+.form-field input:focus-visible {
+  outline: 3px solid rgba(0,229,255,0.12);
+  box-shadow: 0 0 0 3px rgba(0,229,255,0.06);
+  border-color: var(--accent);
+}
+
+/* Button */
+.btn {
+  display: inline-block;
+  border: none;
+  cursor: pointer;
+  padding: 0.65rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  color: var(--btn-text-dark);
+  transition: filter 150ms ease, transform 120ms ease;
+}
+.btn:hover { filter: brightness(1.05); transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+
+/* Alerts (error / success) */
+.alert { padding: 0.9rem; border-radius: 0.4rem; margin-bottom: 1rem; }
+.alert-error {
+  background: rgba(255,82,82,0.06);
+  border-left: 4px solid #ff5252;
+  color: #ffb3b3;
+}
+.alert-success {
+  background: rgba(0,229,255,0.04);
+  border-left: 4px solid var(--accent);
+  color: #9ef2ff;
+}
+
+/* Helper text area */
+.login-help { margin-top: 0.75rem; color: var(--muted); font-size: 0.92rem; }
+
+/* Skip-link visible on focus for accessibility */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+  width: auto;
+  height: auto;
+  padding: 0.35rem 0.6rem;
+  background: #001018;
+  color: var(--accent);
+  border-radius: 0.25rem;
+  z-index: 999;
+}
+
+/* Responsive adjustments */
+@media (min-width: 560px) {
+  .login-form { grid-template-columns: 1fr 1fr; }
+  .login-form .grid-span-2 { grid-column: 1 / -1; }
+  .form-field.grid-span-2 { grid-column: 1 / -1; }
+}
+@media (max-width: 559px) {
+  .container { margin: 1.25rem auto; }
+  .site-main { padding: 1rem; }
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .btn { transition: none !important; transform: none !important; }
+}
