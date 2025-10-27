@@ -90,8 +90,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title><?php echo htmlspecialchars($pageTitle, ENT_QUOTES, 'UTF-8'); ?></title>
-  <link rel="stylesheet" href="/styles/apply_styles.css">
-  <link rel="stylesheet" href="/styles/manage_styles.css">
+  <link rel="stylesheet" href="styles/apply_styles.css">
+  <link rel="stylesheet" href="styles/manage_styles.css">
+  <link rel="stylesheet" href="styles/login_styles.css">
   <meta name="description" content="HR Manager Login - Panda Mice Recruitment System">
 </head>
 <body>
