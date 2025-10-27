@@ -84,15 +84,15 @@ CREATE TABLE `jobs` (
   `title` varchar(150) NOT NULL,
   `category` varchar(50) NOT NULL,
   `location` varchar(100) NOT NULL,
-  remote varchar(20) NOT NULL,            -- (27/10/2025): added new category "remote"; Remote options    
-  `job_type` varchar(50) NOT NULL,        -- (21/10/2025): added new category "job_type"; e.g. Full-Time, Internship
-  `salary` int(12) NOT NULL,              -- (21/10/2025): change data type from varchar to int
+  remote varchar(20) NOT NULL,            -- added new category "remote"; Remote options
+  `job_type` varchar(50) NOT NULL,        -- added new category "job_type"; e.g. Full-Time, Internship
+  `salary` varchar(100) NOT NULL,         -- FIXED: changed from int to varchar(100) to match application expectations and sb.sql (prevents filtering/type errors)
   `reporting_line` varchar(100) NOT NULL, 
   `description` text NOT NULL,
-  `responsibilities` text NOT NULL,       -- (21/10/2025): added new category; used for key responsibilities
-  `essential_req` text NOT NULL,          -- (21/10/2025): add new category; used for essential requirements
-  `preferrable_req` text NOT NULL,        -- (21/10/2025): add new category; used for preferrable requirements
-  `opening_date` date NOT NULL,           -- (21/10/2025): add new category; used for job opening date
+  `responsibilities` text NOT NULL,
+  `essential_req` text NOT NULL,
+  `preferrable_req` text NOT NULL,
+  `opening_date` date NOT NULL,
   `closing_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 

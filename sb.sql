@@ -19,7 +19,7 @@ CREATE TABLE jobs (
   location VARCHAR(100) NOT NULL,          -- Job location
   remote varchar(20) NOT NULL,             -- Remote options e.g. Remote, Hybrid
   job_type VARCHAR(50) NOT NULL,           -- e.g. Full-Time, Internship etc.
-  salary VARCHAR(100) NOT NULL,            -- Salary range
+  salary VARCHAR(100) NOT NULL,            -- CHANGED: keep salary as VARCHAR(100) (consistent with dumped SQL). Prevents type mismatch with app filters expecting strings/ranges.
   reporting_line VARCHAR(100) NOT NULL,    -- Who the role reports to
   description TEXT NOT NULL,               -- Short description
   responsibilities TEXT NOT NULL,          -- Key Responsibilities of the role
