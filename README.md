@@ -47,23 +47,24 @@ This project is a database-backed web application. These instructions explain ho
 
 ### 3) Create database and import SQL
 
+IMPORTANT: Use project2_db for importing the database!!! Do not use any other SQL file!!
+
 Option A — phpMyAdmin (recommended):
 
 - Open http://localhost/phpmyadmin
-- Create a new database (e.g., project_db).
-- Select the new database -> Import -> Choose the SQL dump file from your project (e.g., /opt/lampp/htdocs/YourProjectFolder/database.sql or C:\xampp\htdocs\YourProjectFolder\database.sql) -> Go.
+- Select the Import -> Choose the SQL dump file from your project (e.g., /opt/lampp/htdocs/YourProjectFolder/project2_db.sql or C:\xampp\htdocs\YourProjectFolder\project2_db.sql) -> Go.
 
 Option B — mysql CLI:
 
 - Windows (from Git Bash or CMD):
   - cd C:\xampp\mysql\bin
-  - mysql -u root < "C:\xampp\htdocs\YourProjectFolder\database.sql"
-  - Or specify DB name: mysql -u root -e "CREATE DATABASE project_db; USE project_db;" && mysql -u root project_db < "C:\xampp\htdocs\YourProjectFolder\database.sql"
+  - mysql -u root < "C:\xampp\htdocs\YourProjectFolder\project2_db.sql"
+  - Or specify DB name: mysql -u root -e "CREATE DATABASE project_db; USE project_db;" && mysql -u root project_db < "C:\xampp\htdocs\YourProjectFolder\project2_db.sql"
 - Linux:
-  - sudo /opt/lampp/bin/mysql -u root < /opt/lampp/htdocs/YourProjectFolder/database.sql
+  - sudo /opt/lampp/bin/mysql -u root < /opt/lampp/htdocs/YourProjectFolder/project2_db.sql
   - Or:
     - sudo /opt/lampp/bin/mysql -u root -e "CREATE DATABASE project_db;"
-    - sudo /opt/lampp/bin/mysql -u root project_db < /opt/lampp/htdocs/YourProjectFolder/database.sql
+    - sudo /opt/lampp/bin/mysql -u root project_db < /opt/lampp/htdocs/YourProjectFolder/project2_db.sql
 
 Note: XAMPP MySQL default user is `root` with no password unless you set one.
 
